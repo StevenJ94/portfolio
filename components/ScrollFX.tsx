@@ -1,0 +1,198 @@
+"use client";
+
+import { useEffect } from "react";
+
+/**
+ * Comportamientos de scroll/puntero portados del artefacto original:
+ *  - initReveal : animación de entrada "riseIn" + contadores (data-count)
+ *  - initTilt   : inclinación 3D en [data-tilt]
+ *  - initScroll : barra de progreso + parallax de secciones
+ *  - initNav    : resaltado del nav lateral según la sección visible (scroll-spy)
+ * Opera sobre atributos data-* del DOM, así que no necesita props.
+ */
+export default function ScrollFX() {
+  useEffect(() => {
+    const cleanups: Array<() => void> = [];
+
+    /* ---------- reveal + contadores ---------- */
+    const revealNodes = [...document.querySelectorAll<HTMLElement>("[data-reveal]")];
+
+    const countUp = (el: HTMLElement) => {
+      if (el.dataset.done) return;
+      const m = el.textContent?.trim().match(/^([^\d]*)([\d\s.,]+)(.*)$/);
+      if (!m) return;
+      el.dataset.done = "1";
+      const pre = m[1];
+      const post = m[3];
+      const grouped = m[2].includes(" ");
+      const target = parseInt(m[2].replace(/[\s.,]/g, ""), 10);
+      if (!isFinite(target)) return;
+      const dur = 900;
+      const t0 = performance.now();
+      const step = (t: number) => {
+        const p = Math.min(1, (t - t0) / dur);
+        const v = Math.round(target * (1 - Math.pow(1 - p, 3)));
+        el.textContent =
+          pre + (grouped ? v.toLocaleString("es-MX").replace(/,/g, " ") : String(v)) + post;
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+
+    revealNodes.forEach((n, i) => {
+      n.dataset.shown = "1";
+      n.style.opacity = "1";
+      n.style.animation = `riseIn .8s cubic-bezier(.22,1,.36,1) both ${Math.min(i * 90, 700)}ms`;
+      const onEnd = () => {
+        n.style.animation = "none";
+        n.style.transform = "";
+      };
+      n.addEventListener("animationend", onEnd, { once: true });
+      n.querySelectorAll<HTMLElement>("[data-count]").forEach(countUp);
+    });
+
+    // salvaguarda: si la animación quedó congelada (pestaña oculta), forzar visible
+    const repair = () => {
+      revealNodes.forEach((n) => {
+        const cs = getComputedStyle(n);
+        if (parseFloat(cs.opacity) < 0.99) {
+          n.style.animation = "none";
+          n.style.opacity = "1";
+          n.style.transform = "";
+        }
+      });
+    };
+    document.addEventListener("visibilitychange", repair);
+    const repairTimers = [1200, 2600].map((ms) => window.setTimeout(repair, ms));
+    cleanups.push(() => {
+      document.removeEventListener("visibilitychange", repair);
+      repairTimers.forEach(clearTimeout);
+    });
+
+    /* ---------- tilt 3D ---------- */
+    const tiltEls = [...document.querySelectorAll<HTMLElement>("[data-tilt]")];
+    tiltEls.forEach((el) => {
+      const max = parseFloat(el.getAttribute("data-tilt") || "") || 8;
+      const host = el.parentElement;
+      if (host && !host.style.perspective) host.style.perspective = "1100px";
+      el.style.transformStyle = "preserve-3d";
+      const base = el.style.transform || "";
+      const onMove = (e: PointerEvent) => {
+        const r = el.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - 0.5;
+        const py = (e.clientY - r.top) / r.height - 0.5;
+        el.style.transition = "transform .12s linear";
+        el.style.transform =
+          `perspective(1100px) rotateY(${(px * max).toFixed(2)}deg) ` +
+          `rotateX(${(-py * max).toFixed(2)}deg) translateZ(6px)`;
+      };
+      const onLeave = () => {
+        el.style.transition = "transform .6s cubic-bezier(.22,1,.36,1)";
+        el.style.transform = base;
+      };
+      el.addEventListener("pointermove", onMove);
+      el.addEventListener("pointerleave", onLeave);
+      cleanups.push(() => {
+        el.removeEventListener("pointermove", onMove);
+        el.removeEventListener("pointerleave", onLeave);
+      });
+    });
+
+    /* ---------- barra de progreso + parallax ---------- */
+    const bar = document.createElement("div");
+    bar.className = "scroll-progress";
+    document.body.appendChild(bar);
+    const secs = [...document.querySelectorAll<HTMLElement>("main > section")];
+    let raf: number | null = null;
+    const run = () => {
+      raf = null;
+      const sc = document.scrollingElement || document.documentElement;
+      const top = window.scrollY || sc.scrollTop || 0;
+      const max = (sc.scrollHeight || 0) - (sc.clientHeight || window.innerHeight);
+      bar.style.width = (max > 0 ? Math.min(100, (top / max) * 100) : 0) + "%";
+      const vh = window.innerHeight;
+      secs.forEach((s, i) => {
+        if (!s.dataset.shown) return; // no pelear con la animación de reveal
+        const r = s.getBoundingClientRect();
+        if (r.bottom < -200 || r.top > vh + 200) return;
+        const c = (r.top + r.height / 2 - vh / 2) / vh; // -1..1
+        const depth = (i % 2 ? -1 : 1) * 5;
+        s.style.willChange = "transform";
+        s.style.transform =
+          `perspective(1400px) rotateX(${(c * -1.6).toFixed(2)}deg) ` +
+          `translate3d(0,${(c * depth).toFixed(1)}px,0)`;
+      });
+    };
+    const onPageScroll = () => {
+      if (document.hidden) {
+        run();
+        return;
+      }
+      if (!raf) raf = requestAnimationFrame(run);
+    };
+    document.addEventListener("scroll", onPageScroll, { capture: true, passive: true });
+    window.addEventListener("resize", onPageScroll);
+    run();
+    cleanups.push(() => {
+      if (raf) cancelAnimationFrame(raf);
+      document.removeEventListener("scroll", onPageScroll, true);
+      window.removeEventListener("resize", onPageScroll);
+      secs.forEach((s) => (s.style.transform = ""));
+      bar.remove();
+    });
+
+    /* ---------- nav scroll-spy ---------- */
+    const links = [...document.querySelectorAll<HTMLElement>("[data-navlink]")];
+    if (links.length) {
+      const navSecs = links
+        .map((a) => document.getElementById(a.getAttribute("data-navlink") || ""))
+        .filter(Boolean) as HTMLElement[];
+      let activeId = "";
+      let navW = 0;
+      const paint = (active: string) => {
+        links.forEach((a) => {
+          a.classList.toggle("is-active", a.getAttribute("data-navlink") === active);
+        });
+      };
+      const pick = () => {
+        const mid = window.innerHeight * 0.38;
+        let best = navSecs[0];
+        let bestD = Infinity;
+        navSecs.forEach((s) => {
+          const r = s.getBoundingClientRect();
+          const d = Math.abs(r.top - mid);
+          if (r.bottom > 80 && d < bestD) {
+            bestD = d;
+            best = s;
+          }
+        });
+        if (best && (best.id !== activeId || navW !== window.innerWidth)) {
+          activeId = best.id;
+          navW = window.innerWidth;
+          paint(best.id);
+        }
+      };
+      let navRaf: number | null = null;
+      const onNavScroll = () => {
+        if (!navRaf)
+          navRaf = requestAnimationFrame(() => {
+            navRaf = null;
+            pick();
+          });
+      };
+      document.addEventListener("scroll", onNavScroll, { capture: true, passive: true });
+      window.addEventListener("resize", onNavScroll);
+      const t = window.setTimeout(pick, 80);
+      cleanups.push(() => {
+        document.removeEventListener("scroll", onNavScroll, true);
+        window.removeEventListener("resize", onNavScroll);
+        if (navRaf) cancelAnimationFrame(navRaf);
+        clearTimeout(t);
+      });
+    }
+
+    return () => cleanups.forEach((fn) => fn());
+  }, []);
+
+  return null;
+}
