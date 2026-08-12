@@ -15,11 +15,26 @@ export default function Contact() {
             {perfil.email}
           </a>
           <span className="btn-ghost-wrap">
-            <a href={perfil.cvUrl} className="btn-ghost">
-              Descargar CV
+            <a
+              href={`https://wa.me/${perfil.whatsapp}`}
+              className="btn-ghost"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              WhatsApp
             </a>
           </span>
+          {perfil.cvUrl ? (
+            <span className="btn-ghost-wrap">
+              <a href={perfil.cvUrl} className="btn-ghost" download>
+                Descargar CV
+              </a>
+            </span>
+          ) : null}
         </div>
+        <p className="contact-meta">
+          📍 {perfil.ubicacion} · {perfil.telefono}
+        </p>
       </div>
     </section>
   );

@@ -5,11 +5,18 @@ export default function Footer() {
     <footer className="footer">
       <span>{perfil.copyright}</span>
       <span className="footer-social">
-        {social.map((s) => (
-          <a key={s.label} href={s.href}>
-            {s.label}
-          </a>
-        ))}
+        {social.map((s) => {
+          const external = s.href.startsWith("http");
+          return (
+            <a
+              key={s.label}
+              href={s.href}
+              {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+            >
+              {s.label}
+            </a>
+          );
+        })}
       </span>
     </footer>
   );

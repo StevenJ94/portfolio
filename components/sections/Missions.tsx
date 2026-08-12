@@ -1,5 +1,5 @@
 import { misiones } from "@/lib/data";
-import ImageSlot from "@/components/ImageSlot";
+import MissionCover from "@/components/MissionCover";
 
 export default function Missions() {
   return (
@@ -26,7 +26,7 @@ export default function Missions() {
         {misiones.map((m) => (
           <article key={m.num} className="mission" data-reveal>
             <div className="mis-cover">
-              <ImageSlot variant="cover" label="Captura del proyecto" />
+              <MissionCover images={m.images} />
               <div className="mis-cover-grad" aria-hidden="true" />
               <span
                 className="mis-rarity"
@@ -38,7 +38,10 @@ export default function Missions() {
             </div>
             <div className="mis-body">
               <div className="mis-title-row">
-                <h3 className="mis-title">{m.titulo}</h3>
+                <div>
+                  <h3 className="mis-title">{m.titulo}</h3>
+                  {m.empresa ? <div className="mis-empresa">{m.empresa}</div> : null}
+                </div>
                 <span className="mis-num">{m.num}</span>
               </div>
               <p className="mis-desc">{m.desc}</p>
@@ -49,6 +52,16 @@ export default function Missions() {
                   </span>
                 ))}
               </div>
+              {m.link ? (
+                <a
+                  className="mis-link"
+                  href={m.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Ver proyecto →
+                </a>
+              ) : null}
             </div>
           </article>
         ))}
