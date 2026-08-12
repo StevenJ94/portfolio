@@ -2,7 +2,7 @@ const automaticDate = () => {
   const inicio = new Date('2019-12-12').getFullYear();
   const actual = new Date().getFullYear();
   return actual - inicio;
-} 
+}
 
 
 // <---------- / funciones ------>
@@ -51,11 +51,11 @@ const YELLOW = "#FFCA06";
 const NEON_PURPLE = "#BC6CFF"
 
 export const vitals = [
-  { label: "Experiencia", valor:  automaticDate()+'+', nota: "años en la industria", color: SECONDARY },
+  { label: "Experiencia", valor: automaticDate() + '+', nota: "años en la industria", color: SECONDARY },
   { label: "Proyectos", valor: "6+", nota: "en producción", color: PRIMARY },
   { label: "Stack", valor: "4", nota: "Angular · React · Next · RN", color: CYAN },
-  { label: "Fuerte", valor: "Adapta bilidad", nota: "equipos ágiles", color: BLUE },
-  { label: "IA", valor: "Vibe coding", nota: "equipos ágiles", color: YELLOW },
+  { label: "Fuerte", valor: "Adapta bilidad", nota: "Resolución de problemas", color: BLUE },
+  { label: "IA", valor: "Vibe coding", nota: "Automatización ", color: YELLOW },
 ];
 
 export const registro = [
@@ -133,7 +133,7 @@ const RAREZAS: Record<Rareza, { bg: string; glow: string }> = {
 // Proyectos reales del CV. `link` es opcional: si añades una URL, aparece un botón
 // "Ver proyecto →" en la tarjeta.
 export const misiones = [
-   {
+  {
     num: "#01",
     titulo: "Binar10",
     empresa: "Binar10",
@@ -141,69 +141,69 @@ export const misiones = [
       "Sitio web Landing, que permite ver servicios como desarrollo de software, marketing digital, ventas de productos, gestión de contenido hasta lograr la sistematización y automatización de tus operaciones.",
     tags: ["Wordpress"],
     rareza: "Raro" as Rareza,
-    xp: "1 400",
+    xp: "950",
     link: "https://www.binar10.co/",
     images: ["/Binar10/1.png", "/Binar10/2.png", "/Binar10/3.png"],
   },
-   {
+  {
     num: "#02",
     titulo: "Puntos saludables",
     empresa: "Binar10",
     desc:
       "Página web con landing, dashboard que permite al usuario registrarse, iniciar sesión, cunsultar datos de comprar e interactuar y redimir bonos.",
-    tags: ["Nextjs", "google maps","Tailwinds"],
+    tags: ["Nextjs", "google maps", "Tailwinds"],
     rareza: "Legendario" as Rareza,
-    xp: "1 400",
+    xp: "2 000",
     link: "https://puntossaludables.com/",
     images: ["/PS/1.png", "/PS/2.png", "/PS/3.png"],
   },
-    {
+  {
     num: "#03",
     titulo: "Unidrogas",
     empresa: "Binar10",
     desc:
       "Landing  y panel administrativo para usuarios que gestionan y administran productos de droguerías y empleados. Desarrollo y mantenimiento continuo.",
     tags: ["Angular", "Bootstrap", "NGX-Bootstrap"],
-    rareza: "Épico" as Rareza,
-    xp: "980",
+    rareza: "Legendario" as Rareza,
+    xp: "1 850",
     link: "https://unidrogas.com/",
     images: ["/Unidrogas/1.png", "/Unidrogas/2.png", "/Unidrogas/3.png"],
   },
-    {
+  {
     num: "#04",
-    titulo: "Dropopular",
-    empresa: "Binar10",
-    desc:
-      "Landing  y panel administrativo para usuarios que gestionan y administran productos de droguerías y empleados. Desarrollo y mantenimiento continuo.",
-     tags: ["Angular", "Bootstrap", "NGX-Bootstrap"],
-    rareza: "Raro" as Rareza,
-    xp: "1 400",
-    link: "https://dropopular.com/",
-    images: ["/Dropopular/1.png", "/Dropopular/2.png", "/Dropopular/3.png"],
-  },
-   {
-    num: "#05",
     titulo: "SuperaT",
     empresa: "Binar10",
     desc:
       "Dashboard multi empresa, que trabajos con diferente tipos de información, usando herramientas modernas para la visualización de datos, ya sea graficos, mapas, o usando otras aplicaciones.",
     tags: ["Angular", "Google Maps", "RXJS", "NGX-Bootstrap"],
-    rareza: "Épico" as Rareza,
-    xp: "860",
+    rareza: "Legendario" as Rareza,
+    xp: "1 700",
     link: "https://superat.co/",
     images: ["/SuperaT/1.png", "/SuperaT/2.png", "/SuperaT/3.png"],
   },
   {
-    num: "#06",
+    num: "#05",
     titulo: "GIMED",
     empresa: "Binar10",
     desc:
       "Plataforma de venta de productos de droguería como parte del equipo de desarrollo principal, con renderizado del lado del servidor.",
     tags: ["Angular", "Angular Universal", "RXJS", "NGX-Bootstrap"],
     rareza: "Épico" as Rareza,
-    xp: "1 100",
+    xp: "1 550",
     link: "https://www.gimed.com.co/",
     images: ["/GIMED/1.png", "/GIMED/2.png", "/GIMED/3.png"],
+  },
+  {
+    num: "#06",
+    titulo: "Dropopular",
+    empresa: "Binar10",
+    desc:
+      "Landing  y panel administrativo para usuarios que gestionan y administran productos de droguerías y empleados. Desarrollo y mantenimiento continuo.",
+    tags: ["Angular", "Bootstrap", "NGX-Bootstrap"],
+    rareza: "Épico" as Rareza,
+    xp: "1 400",
+    link: "https://dropopular.com/",
+    images: ["/Dropopular/1.png", "/Dropopular/2.png", "/Dropopular/3.png"],
   },
   {
     num: "#07",
@@ -212,13 +212,13 @@ export const misiones = [
     desc:
       "E-commerce que permite a los usuarios visualizar e interactuar con los productos ofrecidos por la página, se puede filtrar por región y categorías.",
     tags: ["Angular", "Bootstrap", "NGX-Bootstrap", "RXJS"],
-    rareza: "Legendario" as Rareza,
-    xp: "1 400",
+    rareza: "Épico" as Rareza,
+    xp: "1 250",
     link: "https://juliennecosmetic.com/",
     images: ["/Julienne/1.png", "/Julienne/2.png", "/Julienne/3.png"],
   },
-  
-   {
+
+  {
     num: "#08",
     titulo: "HSEQ Cloud",
     empresa: "Grupo HSEQ",
@@ -226,34 +226,34 @@ export const misiones = [
       "Apliación web que permite el control o administración de datos, ya sea usuarios, herramientas, roles, etc. ",
     tags: ["NextJS", "Tailwinds", "Firebase", "Google maps"],
     rareza: "Épico" as Rareza,
-    xp: "1 400",
+    xp: "1 100",
     link: "https://hseqcloud.com/",
     images: ["/HSEQ/1.png"],
   },
-   {
-    num: "#09",
-    titulo: "MOS",
-    empresa: "Binar10",
-    desc:
-      "Tienda online de productos de belleza con pasarela de pago y soporte multi-idioma, desarrollada de extremo a extremo.",
-    tags: ["Angular", "Pasarela de pago", "i18n", "RXJS"],
-    rareza: "Legendario" as Rareza,
-    xp: "1 250",
-    link: "",
-    images: ["/MOS/1.jpg"],
-  },
-  {
-    num: "#10",
-    titulo: "GirosYa",
-    empresa: "Binar10",
-    desc:
-      "Sitio web que permite a los usuarios hacer giros, solicitar información, y visualizarla.",
-    tags: ["Angular", "Bootstrap", "NGX-Bootstrap"],
-    rareza: "Raro" as Rareza,
-    xp: "1 400",
-    link: "",
-    images: ["/GirosYa/1.png"],
-  },
+  // {
+  //   num: "#09",
+  //   titulo: "MOS",
+  //   empresa: "Binar10",
+  //   desc:
+  //     "Tienda online de productos de belleza con pasarela de pago y soporte multi-idioma, desarrollada de extremo a extremo.",
+  //   tags: ["Angular", "Pasarela de pago", "i18n", "RXJS"],
+  //   rareza: "Raro" as Rareza,
+  //   xp: "800",
+  //   link: "",
+  //   images: ["/MOS/1.jpg"],
+  // },
+  // {
+  //   num: "#09",
+  //   titulo: "GirosYa",
+  //   empresa: "Binar10",
+  //   desc:
+  //     "Sitio web que permite a los usuarios hacer giros, solicitar información, y visualizarla.",
+  //   tags: ["Angular", "Bootstrap", "NGX-Bootstrap"],
+  //   rareza: "Raro" as Rareza,
+  //   xp: "650",
+  //   link: "",
+  //   images: ["/GirosYa/1.png"],
+  // },
 
 ].map((m) => ({ ...m, rarezaBg: RAREZAS[m.rareza].bg, rarezaGlow: RAREZAS[m.rareza].glow }));
 
@@ -262,12 +262,12 @@ export const statsIntro =
 
 // El orden define la posición en el radar (empezando arriba y girando a la derecha).
 export const ejes = [
+  { k: "Adaptabilidad", v: 100, color: YELLOW },
   { k: "Angular", v: 90, color: PRIMARY },
-  { k: "React", v: 80, color: CYAN },
-  { k: "Next.js", v: 85, color: CYAN_LITE },
-  { k: "React Native", v: 75, color: SECONDARY },
+  { k: "Next.js", v: 85, color: NEON_PURPLE },
   { k: "Vibe Coding", v: 85, color: BLUE },
-  { k: "Adaptabilidad", v: 100, color: CYAN_LITE },
+  { k: "React", v: 80, color: CYAN },
+  { k: "React Native", v: 75, color: SECONDARY },
 ];
 
 export const contacto = {
@@ -278,7 +278,7 @@ export const contacto = {
 
 export const social = [
   { label: "Email", href: "mailto:stevenruiz.p94@gmail.com" },
-  { label: "WhatsApp", href: "https://wa.me/573006369312" },
+  { label: "Ver CV", href: "https://wa.me/573006369312" },
   // ✏️ Agrega la URL de tu perfil de LinkedIn:
   { label: "LinkedIn", href: "#" },
 ];
