@@ -226,7 +226,7 @@ export const misiones = [
       "Apliación web que permite el control o administración de datos, ya sea usuarios, herramientas, roles, etc. ",
     tags: ["NextJS", "Tailwinds", "Firebase", "Google maps"],
     rareza: "Épico" as Rareza,
-    xp: "1 200",
+    xp: "1 100",
     link: "https://hseqcloud.com/",
     images: ["/HSEQ/1.png"],
   },
