@@ -3,7 +3,7 @@ import { perfil, social } from "@/lib/data";
 export default function Footer() {
   return (
     <footer className="footer">
-      <span>{perfil.copyright}</span>
+      <span>© {new Date().getFullYear()} {perfil.nombre} · Save file v2.7</span>
       <span className="footer-social">
         {social.map((s) => {
           const external = s.href.startsWith("http");

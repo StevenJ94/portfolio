@@ -278,7 +278,7 @@ export const contacto = {
   desc: "Estoy abierto a nuevas oportunidades. Escríbeme y te respondo en menos de 24 horas.",
 };
 
-export const social = [
+export const social: { label: string; href: string; download?: boolean }[] = [
   // { label: "Email", href: "mailto:stevenruiz.p94@gmail.com" },
   // { label: "Ver CV", href: perfil.cvUrl, download: true },
 ];
