@@ -855,7 +855,9 @@ a:hover {
 }
 .btn-primary {
   padding: 15px 28px;
+  border: 0;
   border-radius: 11px;
+  font-family: inherit;
   font-weight: 600;
   font-size: 15.5px;
   color: var(--bg);
@@ -863,6 +865,7 @@ a:hover {
   background-size: 200% 100%;
   animation: rgbslide 5s linear infinite, rgbglow 5s linear infinite;
   transition: transform 0.25s;
+  cursor: pointer;
 }
 .btn-primary:hover {
   color: var(--bg);
@@ -908,6 +911,22 @@ a:hover {
 .footer-social {
   display: flex;
   gap: 18px;
+}
+.footer-linkedin {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.25s;
+}
+.footer-linkedin svg {
+  width: 15px;
+  height: 15px;
+  fill: currentColor;
+  transition: filter 0.25s, transform 0.25s;
+}
+.footer-linkedin:hover svg {
+  filter: drop-shadow(0 0 6px rgba(255, 92, 168, 0.75));
+  transform: translateY(-1px);
 }
 
 /* ============================================================

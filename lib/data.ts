@@ -25,12 +25,13 @@ export const perfil = {
   telefono: "+57 300 636 9312",
   whatsapp: "573006369312", // solo dígitos, para el enlace wa.me
   ubicacion: "Barranquilla, Colombia",
-  // ✏️ Cuando tengas tu CV en PDF, ponlo en /public (p. ej. /cv-steven-ruiz.pdf) y su ruta aquí.
-  cvUrl: "",
+  linkedin: "https://www.linkedin.com/in/stevenruiz94",
+  // El CV en PDF vive en /public/CV_Steven_Ruiz_ES.pdf
+  cvUrl: "/CV_Steven_Ruiz_ES.pdf",
   // La foto vive en /public/foto.jpg — no se toca.
   avatar: "/foto.jpg",
   monograma: "S",
-  copyright: "© 2026 Steven Ruíz · Save file v2.7",
+  // copyright: "© 2026 Steven Ruíz · Save file v2.7",
 };
 
 export const navItems = [
@@ -111,6 +112,7 @@ export const sobreMi = {
     "Angular Universal",
     "TypeScript",
     "HTML5",
+    "Wordpress",
     "CSS",
     "Bootstrap",
     "NGX-Bootstrap",
@@ -135,18 +137,6 @@ const RAREZAS: Record<Rareza, { bg: string; glow: string }> = {
 export const misiones = [
   {
     num: "#01",
-    titulo: "Binar10",
-    empresa: "Binar10",
-    desc:
-      "Sitio web Landing, que permite ver servicios como desarrollo de software, marketing digital, ventas de productos, gestión de contenido hasta lograr la sistematización y automatización de tus operaciones.",
-    tags: ["Wordpress"],
-    rareza: "Raro" as Rareza,
-    xp: "950",
-    link: "https://www.binar10.co/",
-    images: ["/Binar10/1.png", "/Binar10/2.png", "/Binar10/3.png"],
-  },
-  {
-    num: "#02",
     titulo: "Puntos saludables",
     empresa: "Binar10",
     desc:
@@ -158,7 +148,7 @@ export const misiones = [
     images: ["/PS/1.png", "/PS/2.png", "/PS/3.png"],
   },
   {
-    num: "#03",
+    num: "#02",
     titulo: "Unidrogas",
     empresa: "Binar10",
     desc:
@@ -170,7 +160,7 @@ export const misiones = [
     images: ["/Unidrogas/1.png", "/Unidrogas/2.png", "/Unidrogas/3.png"],
   },
   {
-    num: "#04",
+    num: "#03",
     titulo: "SuperaT",
     empresa: "Binar10",
     desc:
@@ -182,7 +172,7 @@ export const misiones = [
     images: ["/SuperaT/1.png", "/SuperaT/2.png", "/SuperaT/3.png"],
   },
   {
-    num: "#05",
+    num: "#04",
     titulo: "GIMED",
     empresa: "Binar10",
     desc:
@@ -194,7 +184,7 @@ export const misiones = [
     images: ["/GIMED/1.png", "/GIMED/2.png", "/GIMED/3.png"],
   },
   {
-    num: "#06",
+    num: "#05",
     titulo: "Dropopular",
     empresa: "Binar10",
     desc:
@@ -206,7 +196,7 @@ export const misiones = [
     images: ["/Dropopular/1.png", "/Dropopular/2.png", "/Dropopular/3.png"],
   },
   {
-    num: "#07",
+    num: "#06",
     titulo: "Julienne",
     empresa: "Binar10",
     desc:
@@ -219,7 +209,7 @@ export const misiones = [
   },
 
   {
-    num: "#08",
+    num: "#07",
     titulo: "HSEQ Cloud",
     empresa: "Grupo HSEQ",
     desc:
@@ -229,6 +219,18 @@ export const misiones = [
     xp: "1 150",
     link: "https://hseqcloud.com/",
     images: ["/HSEQ/1.png"],
+  },
+  {
+    num: "#08",
+    titulo: "Binar10",
+    empresa: "Binar10",
+    desc:
+      "Sitio web Landing, que permite ver servicios como desarrollo de software, marketing digital, ventas de productos, gestión de contenido hasta lograr la sistematización y automatización de tus operaciones.",
+    tags: ["Wordpress"],
+    rareza: "Raro" as Rareza,
+    xp: "950",
+    link: "https://www.binar10.co/",
+    images: ["/Binar10/1.png", "/Binar10/2.png", "/Binar10/3.png"],
   },
   // {
   //   num: "#09",
@@ -277,8 +279,6 @@ export const contacto = {
 };
 
 export const social = [
-  { label: "Email", href: "mailto:stevenruiz.p94@gmail.com" },
-  { label: "Ver CV", href: "https://wa.me/573006369312" },
-  // ✏️ Agrega la URL de tu perfil de LinkedIn:
-  { label: "LinkedIn", href: "#" },
+  // { label: "Email", href: "mailto:stevenruiz.p94@gmail.com" },
+  // { label: "Ver CV", href: perfil.cvUrl, download: true },
 ];

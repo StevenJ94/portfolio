@@ -1,6 +1,21 @@
+"use client";
+
+import { useState } from "react";
 import { contacto, perfil } from "@/lib/data";
 
 export default function Contact() {
+  const [copiado, setCopiado] = useState(false);
+
+  const copiarEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(perfil.email);
+      setCopiado(true);
+      setTimeout(() => setCopiado(false), 1800);
+    } catch {
+      // Clipboard no disponible (p. ej. contexto no seguro); no hacemos nada más.
+    }
+  };
+
   return (
     <section id="contacto" className="section s-contact" data-reveal>
       <div className="contact-glow" aria-hidden="true" />
@@ -11,19 +26,9 @@ export default function Contact() {
         <h2 className="contact-title">{contacto.titulo}</h2>
         <p className="contact-desc">{contacto.desc}</p>
         <div className="contact-actions">
-          <a href={`mailto:${perfil.email}`} className="btn-primary">
-            {perfil.email}
-          </a>
-          <span className="btn-ghost-wrap">
-            <a
-              href={`https://wa.me/${perfil.whatsapp}`}
-              className="btn-ghost"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              WhatsApp
-            </a>
-          </span>
+          <button type="button" className="btn-primary" onClick={copiarEmail}>
+            {copiado ? "¡Correo copiado!" : perfil.email}
+          </button>
           {perfil.cvUrl ? (
             <span className="btn-ghost-wrap">
               <a href={perfil.cvUrl} className="btn-ghost" download>
