@@ -43,6 +43,7 @@ export default function PlayerCard() {
             <div
               key={v.label}
               className="vital"
+              data-reveal-item
               style={{ ["--c"]: v.color } as React.CSSProperties}
             >
               <div className="vital-label">{v.label}</div>
@@ -65,6 +66,7 @@ export default function PlayerCard() {
           <div
             key={e.rol + e.periodo}
             className="reg-item"
+            data-reveal-item
             style={{ ["--c"]: e.color } as React.CSSProperties}
           >
             <div className="reg-period">

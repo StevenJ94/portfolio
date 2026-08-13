@@ -4,7 +4,8 @@ import { useEffect } from "react";
 
 /**
  * Comportamientos de scroll/puntero portados del artefacto original:
- *  - initReveal : animación de entrada "riseIn" + contadores (data-count)
+ *  - initReveal : fade-in por sección al hacer scroll (IntersectionObserver),
+ *                 con cascada en las tarjetas [data-reveal-item] + contadores (data-count)
  *  - initTilt   : inclinación 3D en [data-tilt]
  *  - initScroll : barra de progreso + parallax de secciones
  *  - initNav    : resaltado del nav lateral según la sección visible (scroll-spy)
@@ -14,8 +15,8 @@ export default function ScrollFX() {
   useEffect(() => {
     const cleanups: Array<() => void> = [];
 
-    /* ---------- reveal + contadores ---------- */
-    const revealNodes = [...document.querySelectorAll<HTMLElement>("[data-reveal]")];
+    /* ---------- reveal (fade + cascada) + contadores ---------- */
+    const revealRoots = [...document.querySelectorAll<HTMLElement>("[data-reveal]")];
 
     const countUp = (el: HTMLElement) => {
       if (el.dataset.done) return;
@@ -39,35 +40,51 @@ export default function ScrollFX() {
       requestAnimationFrame(step);
     };
 
-    revealNodes.forEach((n, i) => {
-      n.dataset.shown = "1";
-      n.style.opacity = "1";
-      n.style.animation = `riseIn .8s cubic-bezier(.22,1,.36,1) both ${Math.min(i * 90, 700)}ms`;
-      const onEnd = () => {
-        n.style.animation = "none";
-        n.style.transform = "";
-      };
-      n.addEventListener("animationend", onEnd, { once: true });
-      n.querySelectorAll<HTMLElement>("[data-count]").forEach(countUp);
-    });
+    const showRoot = (root: HTMLElement) => {
+      if (root.dataset.shown) return;
+      root.dataset.shown = "1";
+      root.classList.add("is-visible");
+      root.querySelectorAll<HTMLElement>("[data-count]").forEach(countUp);
+    };
 
-    // salvaguarda: si la animación quedó congelada (pestaña oculta), forzar visible
+    if (typeof IntersectionObserver === "undefined") {
+      revealRoots.forEach(showRoot);
+    } else {
+      revealRoots.forEach((root) => {
+        // delay progresivo para que las tarjetas dentro de la sección entren en cascada
+        root.querySelectorAll<HTMLElement>("[data-reveal-item]").forEach((item, j) => {
+          item.style.transitionDelay = `${Math.min(j * 70, 480)}ms`;
+        });
+
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              showRoot(root);
+              io.unobserve(root);
+            });
+          },
+          { threshold: 0.15, rootMargin: "0px 0px -10% 0px" }
+        );
+        io.observe(root);
+        cleanups.push(() => io.disconnect());
+      });
+    }
+
+    // salvaguarda: si la transición quedó congelada (pestaña oculta), forzar visible
     const repair = () => {
-      revealNodes.forEach((n) => {
-        const cs = getComputedStyle(n);
+      revealRoots.forEach((root) => {
+        if (!root.classList.contains("is-visible")) return;
+        const cs = getComputedStyle(root);
         if (parseFloat(cs.opacity) < 0.99) {
-          n.style.animation = "none";
-          n.style.opacity = "1";
-          n.style.transform = "";
+          root.style.transition = "none";
+          root.style.opacity = "1";
+          root.style.transform = "none";
         }
       });
     };
     document.addEventListener("visibilitychange", repair);
-    const repairTimers = [1200, 2600].map((ms) => window.setTimeout(repair, ms));
-    cleanups.push(() => {
-      document.removeEventListener("visibilitychange", repair);
-      repairTimers.forEach(clearTimeout);
-    });
+    cleanups.push(() => document.removeEventListener("visibilitychange", repair));
 
     /* ---------- tilt 3D ---------- */
     const tiltEls = [...document.querySelectorAll<HTMLElement>("[data-tilt]")];

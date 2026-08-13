@@ -17,7 +17,7 @@ export default function About() {
 
       <div className="ficha-grid">
         {sobreMi.ficha.map((f) => (
-          <div key={f.k} className="ficha-item">
+          <div key={f.k} className="ficha-item" data-reveal-item>
             <div className="ficha-k">{f.k}</div>
             <div className="ficha-v">{f.v}</div>
           </div>

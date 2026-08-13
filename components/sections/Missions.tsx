@@ -3,8 +3,8 @@ import MissionCover from "@/components/MissionCover";
 
 export default function Missions() {
   return (
-    <section id="misiones" className="section s-missions">
-      <div className="mis-head" data-reveal>
+    <section id="misiones" className="section s-missions" data-reveal>
+      <div className="mis-head" data-reveal-item>
         <div>
           <div
             className="kicker"
@@ -24,7 +24,7 @@ export default function Missions() {
 
       <div className="mis-grid">
         {misiones.map((m) => (
-          <article key={m.num} className="mission" data-reveal>
+          <article key={m.num} className="mission" data-reveal-item>
             <div className="mis-cover">
               <MissionCover images={m.images} />
               <div className="mis-cover-grad" aria-hidden="true" />

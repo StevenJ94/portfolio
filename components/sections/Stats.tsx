@@ -41,7 +41,7 @@ export default function Stats() {
         <p className="stats-intro">{statsIntro}</p>
         <div className="ejes">
           {ejes.map((a) => (
-            <div key={a.k} className="eje">
+            <div key={a.k} className="eje" data-reveal-item>
               <span className="eje-k">{a.k}</span>
               <span className="eje-v" data-count style={{ ["--c"]: a.color } as React.CSSProperties}>
                 {a.v}
