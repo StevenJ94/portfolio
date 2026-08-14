@@ -25,17 +25,37 @@ export default function Missions() {
       <div className="mis-grid">
         {misiones.map((m) => (
           <article key={m.num} className="mission" data-reveal-item>
-            <div className="mis-cover">
-              <MissionCover images={m.images} />
-              <div className="mis-cover-grad" aria-hidden="true" />
-              <span
-                className="mis-rarity"
-                style={{ background: m.rarezaBg, boxShadow: `0 0 18px ${m.rarezaGlow}` }}
+            {m.link ? (
+              <a
+                className="mis-cover"
+                href={m.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Ver proyecto ${m.titulo}`}
               >
-                {m.rareza}
-              </span>
-              <span className="mis-xp">+{m.xp} XP</span>
-            </div>
+                <MissionCover images={m.images} />
+                <div className="mis-cover-grad" aria-hidden="true" />
+                <span
+                  className="mis-rarity"
+                  style={{ background: m.rarezaBg, boxShadow: `0 0 18px ${m.rarezaGlow}` }}
+                >
+                  {m.rareza}
+                </span>
+                <span className="mis-xp">+{m.xp} XP</span>
+              </a>
+            ) : (
+              <div className="mis-cover">
+                <MissionCover images={m.images} />
+                <div className="mis-cover-grad" aria-hidden="true" />
+                <span
+                  className="mis-rarity"
+                  style={{ background: m.rarezaBg, boxShadow: `0 0 18px ${m.rarezaGlow}` }}
+                >
+                  {m.rareza}
+                </span>
+                <span className="mis-xp">+{m.xp} XP</span>
+              </div>
+            )}
             <div className="mis-body">
               <div className="mis-title-row">
                 <div>

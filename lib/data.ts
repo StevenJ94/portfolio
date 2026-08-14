@@ -4,6 +4,16 @@ const automaticDate = () => {
   return actual - inicio;
 }
 
+const calcularEdad = () => {
+  const nacimiento = new Date('1994-08-01');
+  const hoy = new Date();
+  let edad = hoy.getFullYear() - nacimiento.getFullYear();
+  const yaCumplioEsteAno =
+    hoy.getMonth() > nacimiento.getMonth() ||
+    (hoy.getMonth() === nacimiento.getMonth() && hoy.getDate() >= nacimiento.getDate());
+  if (!yaCumplioEsteAno) edad--;
+  return edad;
+}
 
 // <---------- / funciones ------>
 
@@ -17,10 +27,10 @@ export const perfil = {
   nombre: "Steven Ruíz",
   clase: "Frontend & Mobile Developer",
   nivel: 32,
-  rango: "S",
+  edad: calcularEdad(),
   estado: "Disponible · abierto a nuevas oportunidades",
   tagline:
-    `Desarrollador Front-End con ${automaticDate()} años creando aplicaciones web y móviles modernas con Angular, React, Next.js y React Native.`,
+    `Desarrollador Front-End con más de ${automaticDate()} años de experiencía creando aplicaciones web y móviles modernas con Angular, React, Next.js y React Native.`,
   email: "stevenruiz.p94@gmail.com",
   telefono: "+57 300 636 9312",
   whatsapp: "573006369312", // solo dígitos, para el enlace wa.me
@@ -49,7 +59,7 @@ const CYAN = "#00F0FF";
 const BLUE = "#6BB8FF";
 const CYAN_LITE = "#7CF7FF";
 const YELLOW = "#FFCA06";
-const NEON_PURPLE = "#BC6CFF"
+const RED = "#C5003C"
 
 export const vitals = [
   { label: "Experiencia", valor: automaticDate() + '+', nota: "años en la industria", color: SECONDARY },
@@ -57,6 +67,7 @@ export const vitals = [
   { label: "Stack", valor: "4", nota: "Angular · React · Next · RN", color: CYAN },
   { label: "Fuerte", valor: "Adapta bilidad", nota: "Resolución de problemas", color: BLUE },
   { label: "IA", valor: "Vibe coding", nota: "Automatización ", color: YELLOW },
+  { label: "Metodologías", valor: "Scrum", nota: "Trabajo en equipo", color: RED },
 ];
 
 export const registro = [
@@ -101,7 +112,7 @@ export const sobreMi = {
     { k: "Ubicación", v: "Barranquilla, Colombia" },
     { k: "Idiomas", v: "Español" },
     { k: "Ahora", v: "Binar10 Tecnología y Servicios" },
-    { k: "Modo", v: "Remoto · abierto a ofertas" },
+    { k: "Modo", v: "Remoto · abierto a ofertas laborales" },
   ],
   herramientas: [
     "Angular",
@@ -260,16 +271,16 @@ export const misiones = [
 ].map((m) => ({ ...m, rarezaBg: RAREZAS[m.rareza].bg, rarezaGlow: RAREZAS[m.rareza].glow }));
 
 export const statsIntro =
-  "Mi stack del día a día. Angular es mi base tras años construyendo aplicaciones webs de tipo lading, e-commerce y dashboards; sumo React, React Native y Next.js para producto web y móvil.";
+  "Más allá del código: estas son las habilidades blandas que sostienen mi forma de trabajar en equipo, adaptarme a los cambios y resolver problemas día a día.";
 
 // El orden define la posición en el radar (empezando arriba y girando a la derecha).
 export const ejes = [
   { k: "Adaptabilidad", v: 100, color: YELLOW },
-  { k: "Angular", v: 90, color: PRIMARY },
-  { k: "Next.js", v: 85, color: NEON_PURPLE },
-  { k: "Vibe Coding", v: 85, color: BLUE },
-  { k: "React", v: 80, color: CYAN },
-  { k: "React Native", v: 75, color: SECONDARY },
+  { k: "Resolución de problemas", v: 95, color: PRIMARY },
+  { k: "Trabajo en equipo", v: 90, color: SECONDARY },
+  { k: "Comunicación", v: 85, color: CYAN },
+  { k: "Pensamiento crítico", v: 80, color: BLUE },
+  { k: "Gestión del tiempo", v: 75, color: RED },
 ];
 
 export const contacto = {

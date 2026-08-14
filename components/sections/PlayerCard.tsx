@@ -19,7 +19,7 @@ export default function PlayerCard() {
                 mono={perfil.monograma}
               />
             </div>
-            <span className="avatar-lv">
+            <span className="avatar-lv" title={`Edad: ${perfil.edad} años`}>
               Lv. <span data-count>{perfil.nivel}</span>
             </span>
           </div>
@@ -31,8 +31,7 @@ export default function PlayerCard() {
             </div>
             <h1 className="name">{perfil.nombre}</h1>
             <div className="clase">
-              Clase: <span style={{ color: "var(--pink)" }}>{perfil.clase}</span> · Rango{" "}
-              <span style={{ color: "var(--blue)" }}>{perfil.rango}</span>
+              Clase: <span style={{ color: "var(--pink)" }}>{perfil.clase}</span>
             </div>
             <p className="tagline">{perfil.tagline}</p>
           </div>

@@ -22,6 +22,30 @@ const LABELS: { x: number; y: number; anchor: "start" | "middle" | "end" }[] = [
   { x: 28, y: 80, anchor: "end" },
 ];
 
+const LABEL_LINE_HEIGHT = 12;
+const LABEL_MAX_CHARS = 9;
+
+// Reparte una etiqueta larga en varias líneas cortas para que no se salga
+// del viewBox del radar ni tape los elementos vecinos.
+function wrapLabel(label: string): string[] {
+  const words = label.split(" ");
+  if (words.length === 1) return [label];
+
+  const lines: string[] = [];
+  let current = "";
+  for (const word of words) {
+    const candidate = current ? `${current} ${word}` : word;
+    if (candidate.length > LABEL_MAX_CHARS && current) {
+      lines.push(current);
+      current = word;
+    } else {
+      current = candidate;
+    }
+  }
+  if (current) lines.push(current);
+  return lines;
+}
+
 export default function Stats() {
   const rings = [120, 90, 60, 30];
   const dataPoints = ejes
@@ -53,7 +77,7 @@ export default function Stats() {
 
       <div className="radar-wrap">
         <div className="radar-tilt" data-tilt="14">
-          <svg viewBox="-46 -24 392 348" style={{ width: "100%", height: "auto", overflow: "visible" }}>
+          <svg viewBox="-70 -30 440 360" style={{ width: "100%", height: "auto", overflow: "visible" }}>
             <defs>
               <linearGradient id="radarSweep" gradientUnits="userSpaceOnUse" x1="150" y1="150" x2="150" y2="26">
                 <stop offset="0%" stopColor="#00F0FF" stopOpacity="0" />
@@ -102,12 +126,20 @@ export default function Stats() {
 
             <polygon points={pts(120)} fill="none" stroke="rgba(0,240,255,.22)" strokeWidth="1.5" />
 
-            <g fontFamily="var(--mono)" fontSize="11" letterSpacing="1.6" fill="rgba(237,231,255,.68)">
-              {ejes.map((e, i) => (
-                <text key={e.k} x={LABELS[i].x} y={LABELS[i].y} textAnchor={LABELS[i].anchor}>
-                  {e.k.toUpperCase()}
-                </text>
-              ))}
+            <g fontFamily="var(--mono)" fontSize="10.5" letterSpacing="1" fill="rgba(237,231,255,.68)">
+              {ejes.map((e, i) => {
+                const lines = wrapLabel(e.k.toUpperCase());
+                const startDy = -((lines.length - 1) * LABEL_LINE_HEIGHT) / 2;
+                return (
+                  <text key={e.k} x={LABELS[i].x} y={LABELS[i].y} textAnchor={LABELS[i].anchor}>
+                    {lines.map((line, li) => (
+                      <tspan key={li} x={LABELS[i].x} dy={li === 0 ? startDy : LABEL_LINE_HEIGHT}>
+                        {line}
+                      </tspan>
+                    ))}
+                  </text>
+                );
+              })}
             </g>
           </svg>
         </div>
