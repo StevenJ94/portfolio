@@ -4,7 +4,7 @@ export default function About() {
   return (
     <section id="sobre" className="section s-about" data-reveal>
       <div>
-        <div className="kicker" style={{ color: "var(--cyan)", textShadow: "0 0 16px rgba(0,240,255,.5)" }}>
+        <div className="kicker" style={{ color: "#FFCA06", textShadow: "0 0 16px rgba(255,202,6,.55)" }}>
           Ficha del jugador
         </div>
         <h2 className="h2">Sobre mí</h2>

@@ -57,7 +57,7 @@ export default function Stats() {
       <div>
         <div
           className="kicker"
-          style={{ color: "#9b84ff", textShadow: "0 0 16px rgba(124,92,255,.7)" }}
+          style={{ color: "#ff4d6d", textShadow: "0 0 16px rgba(197,0,60,.7)" }}
         >
           Estadísticas de combate
         </div>

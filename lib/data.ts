@@ -36,6 +36,7 @@ export const perfil = {
   whatsapp: "573006369312", // solo dígitos, para el enlace wa.me
   ubicacion: "Barranquilla, Colombia",
   linkedin: "https://www.linkedin.com/in/stevenruiz94",
+  github: "https://github.com/StevenJ94",
   // El CV en PDF vive en /public/CV_Steven_Ruiz_ES.pdf
   cvUrl: "/CV_Steven_Ruiz_ES.pdf",
   // La foto vive en /public/foto.jpg — no se toca.
@@ -46,9 +47,9 @@ export const perfil = {
 
 export const navItems = [
   { id: "top", href: "#top", label: "Perfil", color: "#00F0FF" },
-  { id: "sobre", href: "#sobre", label: "Sobre mí", color: "#6BB8FF" },
+  { id: "sobre", href: "#sobre", label: "Sobre mí", color: "#FFCA06" },
   { id: "misiones", href: "#misiones", label: "Proyectos", color: "#BC6CFF" },
-  { id: "stats", href: "#stats", label: "Skills", color: "#7C5CFF" },
+  { id: "stats", href: "#stats", label: "Skills", color: "#C5003C" },
   { id: "contacto", href: "#contacto", label: "Contacto", color: "#FF5CA8" },
 ];
 
@@ -105,7 +106,7 @@ export const registro = [
 
 export const sobreMi = {
   parrafos: [
-    "Soy Desarrollador Front-End con más de 5 años de experiencia en la industria tecnológica, especializado en aplicaciones web y móviles modernas. Construyo productos multiplataforma con Angular, React, Next.js y React Native.",
+    `Soy Desarrollador Front-End con más de ${automaticDate()} años de experiencia en la industria tecnológica, especializado en aplicaciones web y móviles modernas. Construyo productos multiplataforma con Angular, React, Next.js y React Native.`,
     "Trabajo con metodologías ágiles (Scrum), colaboro con equipos multidisciplinarios y me adapto rápido a los cambios del proyecto. Con base en Barranquilla, Colombia, y abierto a trabajo remoto.",
   ],
   ficha: [
