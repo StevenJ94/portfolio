@@ -70,7 +70,7 @@ export default function Stats() {
       <div>
         <div
           className="kicker"
-          style={{ color: "#ff4d6d", textShadow: "0 0 16px rgba(197,0,60,.7)" }}
+          style={{ color: "#FFCA06", textShadow: "0 0 16px rgba(255,202,6,.55)" }}
         >
           {ui.stats.kicker[lang]}
         </div>

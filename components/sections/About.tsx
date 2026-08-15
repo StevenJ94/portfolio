@@ -9,7 +9,7 @@ export default function About() {
   return (
     <section id="sobre" className="section s-about" data-reveal>
       <div>
-        <div className="kicker" style={{ color: "#FFCA06", textShadow: "0 0 16px rgba(255,202,6,.55)" }}>
+        <div className="kicker" style={{ color: "#ff4d6d", textShadow: "0 0 16px rgba(197,0,60,.7)" }}>
           {ui.about.kicker[lang]}
         </div>
         <h2 className="h2">{ui.about.title[lang]}</h2>

@@ -36,8 +36,8 @@ export const perfil = {
     en: "Available · open to new opportunities",
   } as Bi,
   tagline: {
-    es: `Desarrollador Front-End con más de ${automaticDate()} años de experiencía creando aplicaciones web y móviles modernas con Angular, React, Next.js y React Native.`,
-    en: `Front-End Developer with over ${automaticDate()} years of experience building modern web and mobile applications with Angular, React, Next.js, and React Native.`,
+    es: `Desarrollador Front‑End con más de ${automaticDate()} años de experiencía creando aplicaciones web y móviles modernas con Angular, React, Next.js y React Native.`,
+    en: `Front‑End Developer with over ${automaticDate()} years of experience building modern web and mobile applications with Angular, React, Next.js, and React Native.`,
   } as Bi,
   email: "stevenruiz.p94@gmail.com",
   telefono: "+57 300 636 9312",
@@ -58,9 +58,9 @@ export const perfil = {
 
 export const navItems: { id: string; href: string; label: Bi; color: string }[] = [
   { id: "top", href: "#top", label: { es: "Perfil", en: "Profile" }, color: "#00F0FF" },
-  { id: "sobre", href: "#sobre", label: { es: "Sobre mí", en: "About" }, color: "#FFCA06" },
+  { id: "sobre", href: "#sobre", label: { es: "Sobre mí", en: "About" }, color: "#C5003C" },
   { id: "misiones", href: "#misiones", label: { es: "Proyectos", en: "Projects" }, color: "#BC6CFF" },
-  { id: "stats", href: "#stats", label: { es: "Skills", en: "Skills" }, color: "#C5003C" },
+  { id: "stats", href: "#stats", label: { es: "Skills", en: "Skills" }, color: "#FFCA06" },
   { id: "contacto", href: "#contacto", label: { es: "Contacto", en: "Contact" }, color: "#FF5CA8" },
 ];
 
@@ -114,7 +114,7 @@ export const vitals: { label: Bi; valor: Bi; nota: Bi; color: string }[] = [
 
 export const registro: { rol: Bi; empresa: string; periodo: Bi; color: string; desc: Bi }[] = [
   {
-    rol: { es: "Desarrollador Móvil y Front-End", en: "Mobile & Front-End Developer" },
+    rol: { es: "Desarrollador Móvil y Front‑End", en: "Mobile & Front‑End Developer" },
     empresa: "Grupo HSEQ",
     periodo: { es: "2025 — Hoy", en: "2025 — Present" },
     color: CYAN,
@@ -124,7 +124,7 @@ export const registro: { rol: Bi; empresa: string; periodo: Bi; color: string; d
     },
   },
   {
-    rol: { es: "Desarrollador Front-End", en: "Front-End Developer" },
+    rol: { es: "Desarrollador Front‑End", en: "Front‑End Developer" },
     empresa: "Binar10 Tecnología y Servicios",
     periodo: { es: "2019 — Hoy", en: "2019 — Present" },
     color: SECONDARY,
@@ -158,11 +158,11 @@ export const registro: { rol: Bi; empresa: string; periodo: Bi; color: string; d
 export const sobreMi = {
   parrafos: {
     es: [
-      `Soy Desarrollador Front-End con más de ${automaticDate()} años de experiencia en la industria tecnológica, especializado en aplicaciones web y móviles modernas. Construyo productos multiplataforma con Angular, React, Next.js y React Native.`,
+      `Soy Desarrollador Front‑End con más de ${automaticDate()} años de experiencia en la industria tecnológica, especializado en aplicaciones web y móviles modernas. Construyo productos multiplataforma con Angular, React, Next.js y React Native.`,
       "Trabajo con metodologías ágiles (Scrum), colaboro con equipos multidisciplinarios y me adapto rápido a los cambios del proyecto. Con base en Barranquilla, Colombia, y abierto a trabajo remoto.",
     ],
     en: [
-      `I'm a Front-End Developer with over ${automaticDate()} years of experience in the tech industry, specialized in modern web and mobile applications. I build cross-platform products with Angular, React, Next.js, and React Native.`,
+      `I'm a Front‑End Developer with over ${automaticDate()} years of experience in the tech industry, specialized in modern web and mobile applications. I build cross-platform products with Angular, React, Next.js, and React Native.`,
       "I work with agile methodologies (Scrum), collaborate with multidisciplinary teams, and adapt quickly to project changes. Based in Barranquilla, Colombia, and open to remote work.",
     ],
   },
@@ -367,7 +367,7 @@ export const ejes: { k: Bi; v: number; color: string }[] = [
 
 export const contacto: { kicker: Bi; titulo: Bi; desc: Bi } = {
   kicker: { es: "Nueva partida", en: "New quest" },
-  titulo: { es: "¿Buscas un Front-End para tu equipo?", en: "Looking for a Front-End dev for your team?" },
+  titulo: { es: "¿Buscas un Front‑End para tu equipo?", en: "Looking for a Front‑End dev for your team?" },
   desc: {
     es: "Estoy abierto a nuevas oportunidades. Escríbeme y te respondo en menos de 24 horas.",
     en: "I'm open to new opportunities. Reach out and I'll get back to you within 24 hours.",

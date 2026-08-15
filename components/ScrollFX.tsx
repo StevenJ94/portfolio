@@ -172,16 +172,17 @@ export default function ScrollFX() {
         });
       };
       const pick = () => {
+        // La sección "activa" es la última (en orden de página) cuyo borde
+        // superior ya cruzó la línea de referencia. Antes se elegía la más
+        // cercana a esa línea por valor absoluto, lo cual fallaba cuando dos
+        // secciones cortas cabían juntas en pantalla: una sección aún no
+        // alcanzada podía "verse" más cercana que la que realmente ocupa
+        // la pantalla, hacer clic en un botón del sidebar iluminaba otro.
         const mid = window.innerHeight * 0.38;
         let best = navSecs[0];
-        let bestD = Infinity;
         navSecs.forEach((s) => {
           const r = s.getBoundingClientRect();
-          const d = Math.abs(r.top - mid);
-          if (r.bottom > 80 && d < bestD) {
-            bestD = d;
-            best = s;
-          }
+          if (r.top <= mid) best = s;
         });
         if (best && (best.id !== activeId || navW !== window.innerWidth)) {
           activeId = best.id;

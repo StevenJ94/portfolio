@@ -402,10 +402,10 @@ a:hover {
   gap: 34px;
   padding: 32px;
   border-radius: 22px;
-  border: 1px solid rgba(255, 202, 6, 0.3);
-  background: linear-gradient(160deg, rgba(255, 202, 6, 0.13), rgba(255, 202, 6, 0.04) 58%, rgba(11, 6, 32, 0.7));
+  border: 1px solid rgba(197, 0, 60, 0.4);
+  background: linear-gradient(160deg, rgba(197, 0, 60, 0.18), rgba(197, 0, 60, 0.05) 58%, rgba(11, 6, 32, 0.7));
   backdrop-filter: blur(22px) saturate(155%);
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5), 0 0 44px -14px rgba(255, 202, 6, 0.45),
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5), 0 0 44px -14px rgba(197, 0, 60, 0.6),
     inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
@@ -423,10 +423,10 @@ a:hover {
   align-items: center;
   padding: 30px;
   border-radius: 22px;
-  border: 1px solid rgba(197, 0, 60, 0.4);
-  background: linear-gradient(165deg, rgba(197, 0, 60, 0.18), rgba(197, 0, 60, 0.05) 58%, rgba(11, 6, 32, 0.7));
+  border: 1px solid rgba(255, 202, 6, 0.3);
+  background: linear-gradient(165deg, rgba(255, 202, 6, 0.13), rgba(255, 202, 6, 0.04) 58%, rgba(11, 6, 32, 0.7));
   backdrop-filter: blur(20px) saturate(150%);
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5), 0 0 44px -14px rgba(197, 0, 60, 0.6),
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5), 0 0 44px -14px rgba(255, 202, 6, 0.45),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
