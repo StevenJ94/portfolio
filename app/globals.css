@@ -35,6 +35,20 @@ body {
   font-family: var(--font-sans), sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  /* Evita palabras huérfanas: ningún texto del sitio debe dejar una sola
+     palabra sola en la última línea. Se hereda a todo el proyecto. */
+  text-wrap: pretty;
+}
+
+/* Los títulos cortos (nombres, h2, etc.) se benefician más de "balance",
+   que reparte el texto en líneas parejas en vez de solo cuidar la última. */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
 }
 
 a {
@@ -491,8 +505,8 @@ a:hover {
 
 .avatar {
   position: relative;
-  width: 214px;
-  height: 214px;
+  width: 257px;
+  height: 257px;
   flex: none;
   transform-style: preserve-3d;
   animation: float2 8s ease-in-out infinite;
@@ -512,6 +526,7 @@ a:hover {
   border-radius: 20px;
   background: linear-gradient(140deg, #00f0ff, #6bb8ff 45%, #bc6cff);
   box-shadow: 0 0 40px rgba(0, 240, 255, 0.45);
+  transform: rotate(-6deg);
 }
 
 .avatar-lv {
@@ -579,7 +594,6 @@ a:hover {
   font-size: 16px;
   line-height: 1.5;
   color: rgba(237, 231, 255, 0.66);
-  text-wrap: pretty;
 }
 
 .vitals {
@@ -712,7 +726,6 @@ a:hover {
   font-size: 16px;
   line-height: 1.7;
   color: rgba(237, 231, 255, 0.7);
-  text-wrap: pretty;
 }
 
 .about-p.muted {
@@ -946,7 +959,6 @@ a:hover {
   font-size: 14px;
   line-height: 1.6;
   color: rgba(237, 231, 255, 0.6);
-  text-wrap: pretty;
 }
 
 .mis-tags {
@@ -976,7 +988,6 @@ a:hover {
   font-size: 15.5px;
   line-height: 1.5;
   color: rgba(237, 231, 255, 0.6);
-  text-wrap: pretty;
 }
 
 .ejes {
@@ -1169,6 +1180,7 @@ a:hover {
 
 .slot-avatar {
   border-radius: 17px;
+  transform: rotate(-6deg);
 }
 
 .slot-avatar .slot-mono {
