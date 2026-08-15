@@ -1,9 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { contacto, perfil } from "@/lib/data";
+import { contacto, perfil, ui } from "@/lib/data";
+import { useLanguage } from "@/lib/i18n";
 
 export default function Contact() {
+  const { lang } = useLanguage();
   const [copiado, setCopiado] = useState(false);
 
   const copiarEmail = async () => {
@@ -21,18 +23,18 @@ export default function Contact() {
       <div className="contact-glow" aria-hidden="true" />
       <div className="contact-inner">
         <div className="kicker" style={{ color: "#ff8cc4" }}>
-          {contacto.kicker}
+          {contacto.kicker[lang]}
         </div>
-        <h2 className="contact-title">{contacto.titulo}</h2>
-        <p className="contact-desc">{contacto.desc}</p>
+        <h2 className="contact-title">{contacto.titulo[lang]}</h2>
+        <p className="contact-desc">{contacto.desc[lang]}</p>
         <div className="contact-actions">
           <button type="button" className="btn-primary" onClick={copiarEmail}>
-            {copiado ? "¡Correo copiado!" : perfil.email}
+            {copiado ? ui.contact.emailCopied[lang] : perfil.email}
           </button>
-          {perfil.cvUrl ? (
+          {perfil.cvUrl[lang] ? (
             <span className="btn-ghost-wrap">
-              <a href={perfil.cvUrl} className="btn-ghost" download>
-                Descargar CV
+              <a href={perfil.cvUrl[lang]} className="btn-ghost" download>
+                {ui.contact.downloadCv[lang]}
               </a>
             </span>
           ) : null}

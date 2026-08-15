@@ -1,8 +1,13 @@
-import { navItems } from "@/lib/data";
+"use client";
+
+import { navItems, ui } from "@/lib/data";
+import { useLanguage } from "@/lib/i18n";
 
 export default function NavRail() {
+  const { lang } = useLanguage();
+
   return (
-    <aside className="rail" aria-label="Navegación">
+    <aside className="rail" aria-label={ui.nav.aria[lang]}>
       <nav className="rail-list">
         {navItems.map((n) => (
           <a
@@ -14,7 +19,7 @@ export default function NavRail() {
           >
             <span className="nav-bar" aria-hidden="true" />
             <span className="nav-dot" aria-hidden="true" />
-            <span className="nav-text">{n.label}</span>
+            <span className="nav-text">{n.label[lang]}</span>
           </a>
         ))}
       </nav>

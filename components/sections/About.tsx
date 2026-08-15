@@ -1,14 +1,19 @@
-import { sobreMi } from "@/lib/data";
+"use client";
+
+import { sobreMi, ui } from "@/lib/data";
+import { useLanguage } from "@/lib/i18n";
 
 export default function About() {
+  const { lang } = useLanguage();
+
   return (
     <section id="sobre" className="section s-about" data-reveal>
       <div>
         <div className="kicker" style={{ color: "#FFCA06", textShadow: "0 0 16px rgba(255,202,6,.55)" }}>
-          Ficha del jugador
+          {ui.about.kicker[lang]}
         </div>
-        <h2 className="h2">Sobre mí</h2>
-        {sobreMi.parrafos.map((p, i) => (
+        <h2 className="h2">{ui.about.title[lang]}</h2>
+        {sobreMi.parrafos[lang].map((p, i) => (
           <p key={i} className={"about-p" + (i > 0 ? " muted" : "")}>
             {p}
           </p>
@@ -17,9 +22,9 @@ export default function About() {
 
       <div className="ficha-grid">
         {sobreMi.ficha.map((f) => (
-          <div key={f.k} className="ficha-item" data-reveal-item>
-            <div className="ficha-k">{f.k}</div>
-            <div className="ficha-v">{f.v}</div>
+          <div key={f.k.es} className="ficha-item" data-reveal-item>
+            <div className="ficha-k">{f.k[lang]}</div>
+            <div className="ficha-v">{f.v[lang]}</div>
           </div>
         ))}
         <div className="tools">

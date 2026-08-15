@@ -1,4 +1,7 @@
-import { ejes, statsIntro } from "@/lib/data";
+"use client";
+
+import { ejes, statsIntro, ui } from "@/lib/data";
+import { useLanguage } from "@/lib/i18n";
 
 const CX = 150;
 const CY = 150;
@@ -26,14 +29,23 @@ const LABEL_LINE_HEIGHT = 12;
 const LABEL_MAX_CHARS = 9;
 
 // Reparte una etiqueta larga en varias líneas cortas para que no se salga
-// del viewBox del radar ni tape los elementos vecinos.
+// del viewBox del radar ni tape los elementos vecinos. Si una sola palabra
+// (p. ej. "ADAPTABILITY") ya supera el máximo, también se parte por caracteres.
 function wrapLabel(label: string): string[] {
   const words = label.split(" ");
-  if (words.length === 1) return [label];
 
   const lines: string[] = [];
   let current = "";
-  for (const word of words) {
+  for (const rawWord of words) {
+    let word = rawWord;
+    while (word.length > LABEL_MAX_CHARS) {
+      if (current) {
+        lines.push(current);
+        current = "";
+      }
+      lines.push(word.slice(0, LABEL_MAX_CHARS));
+      word = word.slice(LABEL_MAX_CHARS);
+    }
     const candidate = current ? `${current} ${word}` : word;
     if (candidate.length > LABEL_MAX_CHARS && current) {
       lines.push(current);
@@ -47,6 +59,7 @@ function wrapLabel(label: string): string[] {
 }
 
 export default function Stats() {
+  const { lang } = useLanguage();
   const rings = [120, 90, 60, 30];
   const dataPoints = ejes
     .map((e, i) => vtx((RO * e.v) / 100, i).map((n) => n.toFixed(1)).join(","))
@@ -59,14 +72,14 @@ export default function Stats() {
           className="kicker"
           style={{ color: "#ff4d6d", textShadow: "0 0 16px rgba(197,0,60,.7)" }}
         >
-          Estadísticas de combate
+          {ui.stats.kicker[lang]}
         </div>
-        <h2 className="h2">Atributos</h2>
-        <p className="stats-intro">{statsIntro}</p>
+        <h2 className="h2">{ui.stats.title[lang]}</h2>
+        <p className="stats-intro">{statsIntro[lang]}</p>
         <div className="ejes">
           {ejes.map((a) => (
-            <div key={a.k} className="eje" data-reveal-item>
-              <span className="eje-k">{a.k}</span>
+            <div key={a.k.es} className="eje" data-reveal-item>
+              <span className="eje-k">{a.k[lang]}</span>
               <span className="eje-v" data-count style={{ ["--c"]: a.color } as React.CSSProperties}>
                 {a.v}
               </span>
@@ -119,7 +132,7 @@ export default function Stats() {
               <g className="radar-verts" fill="#7CF7FF">
                 {ejes.map((e, i) => {
                   const [x, y] = vtx((RO * e.v) / 100, i);
-                  return <circle key={e.k} cx={x.toFixed(1)} cy={y.toFixed(1)} r="3.6" />;
+                  return <circle key={e.k.es} cx={x.toFixed(1)} cy={y.toFixed(1)} r="3.6" />;
                 })}
               </g>
             </g>
@@ -128,10 +141,10 @@ export default function Stats() {
 
             <g fontFamily="var(--mono)" fontSize="10.5" letterSpacing="1" fill="rgba(237,231,255,.68)">
               {ejes.map((e, i) => {
-                const lines = wrapLabel(e.k.toUpperCase());
+                const lines = wrapLabel(e.k[lang].toUpperCase());
                 const startDy = -((lines.length - 1) * LABEL_LINE_HEIGHT) / 2;
                 return (
-                  <text key={e.k} x={LABELS[i].x} y={LABELS[i].y} textAnchor={LABELS[i].anchor}>
+                  <text key={e.k.es} x={LABELS[i].x} y={LABELS[i].y} textAnchor={LABELS[i].anchor}>
                     {lines.map((line, li) => (
                       <tspan key={li} x={LABELS[i].x} dy={li === 0 ? startDy : LABEL_LINE_HEIGHT}>
                         {line}

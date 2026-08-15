@@ -1,7 +1,12 @@
-import { perfil, vitals, registro } from "@/lib/data";
+"use client";
+
+import { perfil, vitals, registro, ui } from "@/lib/data";
+import { useLanguage } from "@/lib/i18n";
 import ImageSlot from "@/components/ImageSlot";
 
 export default function PlayerCard() {
+  const { lang } = useLanguage();
+
   return (
     <section id="top" className="section s-player" data-reveal>
       <div className="pc-glow" aria-hidden="true" />
@@ -20,7 +25,10 @@ export default function PlayerCard() {
                   mono={perfil.monograma}
                 />
               </div>
-              <span className="avatar-lv" title={`Edad: ${perfil.edad} años`}>
+              <span
+                className="avatar-lv"
+                title={`${ui.player.ageTitle[lang]}: ${perfil.edad} ${ui.player.years[lang]}`}
+              >
                 Lv. <span data-count>{perfil.nivel}</span>
               </span>
             </div>
@@ -54,52 +62,52 @@ export default function PlayerCard() {
           <div className="pc-info">
             <div className="status">
               <span className="status-dot" aria-hidden="true" />
-              {perfil.estado}
+              {perfil.estado[lang]}
             </div>
             <h1 className="name">{perfil.nombre}</h1>
             <div className="clase">
-              Clase: <span style={{ color: "var(--pink)" }}>{perfil.clase}</span>
+              {ui.player.classLabel[lang]}: <span style={{ color: "var(--pink)" }}>{perfil.clase}</span>
             </div>
-            <p className="tagline">{perfil.tagline}</p>
+            <p className="tagline">{perfil.tagline[lang]}</p>
           </div>
         </div>
 
         <div className="vitals">
           {vitals.map((v) => (
             <div
-              key={v.label}
+              key={v.label.es}
               className="vital"
               data-reveal-item
               style={{ ["--c"]: v.color } as React.CSSProperties}
             >
-              <div className="vital-label">{v.label}</div>
+              <div className="vital-label">{v.label[lang]}</div>
               <div className="vital-val" data-count>
-                {v.valor}
+                {v.valor[lang]}
               </div>
-              <div className="vital-note">{v.nota}</div>
+              <div className="vital-note">{v.nota[lang]}</div>
             </div>
           ))}
         </div>
       </div>
 
       <div className="divider">
-        <span className="divider-label">Registro de misión · 2016 → hoy</span>
+        <span className="divider-label">{ui.player.missionLog[lang]}</span>
         <span className="divider-line" aria-hidden="true" />
       </div>
 
       <div className="reg-grid">
         {registro.map((e) => (
           <div
-            key={e.rol + e.periodo}
+            key={e.empresa + e.periodo.es}
             className="reg-item"
             data-reveal-item
             style={{ ["--c"]: e.color } as React.CSSProperties}
           >
             <div className="reg-period">
               <span className="reg-dot" aria-hidden="true" />
-              {e.periodo}
+              {e.periodo[lang]}
             </div>
-            <div className="reg-rol">{e.rol}</div>
+            <div className="reg-rol">{e.rol[lang]}</div>
             <div className="reg-empresa">{e.empresa}</div>
           </div>
         ))}

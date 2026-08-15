@@ -38,6 +38,9 @@ body {
   /* Evita palabras huérfanas: ningún texto del sitio debe dejar una sola
      palabra sola en la última línea. Se hereda a todo el proyecto. */
   text-wrap: pretty;
+  /* Si una sola palabra (p. ej. "Adaptability") es más ancha que su caja,
+     se parte en vez de desbordarse. También se hereda a todo el proyecto. */
+  overflow-wrap: break-word;
 }
 
 /* Los títulos cortos (nombres, h2, etc.) se benefician más de "balance",
@@ -314,6 +317,57 @@ a:hover {
 }
 
 /* ============================================================
+   Language switcher
+   ============================================================ */
+.lang-switch {
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  z-index: 70;
+  display: flex;
+  gap: 4px;
+  padding: 5px;
+  border-radius: 999px;
+  background: rgba(10, 6, 22, 0.6);
+  border: 1px solid rgba(237, 231, 255, 0.14);
+  backdrop-filter: blur(14px);
+}
+
+.lang-switch-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px 6px 8px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(237, 231, 255, 0.5);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: color 0.25s, background 0.25s, box-shadow 0.25s;
+}
+
+.lang-switch-btn svg {
+  width: 18px;
+  height: 12px;
+  border-radius: 2px;
+  flex: none;
+}
+
+.lang-switch-btn:hover {
+  color: rgba(237, 231, 255, 0.85);
+}
+
+.lang-switch-btn.is-active {
+  color: #fff;
+  background: rgba(0, 240, 255, 0.14);
+  box-shadow: 0 0 14px rgba(0, 240, 255, 0.35), inset 0 0 0 1px rgba(0, 240, 255, 0.4);
+}
+
+/* ============================================================
    Main + sections
    ============================================================ */
 .main {
@@ -505,8 +559,8 @@ a:hover {
 
 .avatar {
   position: relative;
-  width: 257px;
-  height: 257px;
+  width: 214px;
+  height: 214px;
   flex: none;
   transform-style: preserve-3d;
   animation: float2 8s ease-in-out infinite;
@@ -526,7 +580,6 @@ a:hover {
   border-radius: 20px;
   background: linear-gradient(140deg, #00f0ff, #6bb8ff 45%, #bc6cff);
   box-shadow: 0 0 40px rgba(0, 240, 255, 0.45);
-  transform: rotate(-6deg);
 }
 
 .avatar-lv {
@@ -1144,7 +1197,7 @@ a:hover {
    ============================================================ */
 .footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 14px;
   font-family: var(--mono);
@@ -1180,7 +1233,10 @@ a:hover {
 
 .slot-avatar {
   border-radius: 17px;
-  transform: rotate(-6deg);
+}
+
+.slot-avatar img {
+  transform: scale(1.1) translateX(-3.5%);
 }
 
 .slot-avatar .slot-mono {
@@ -1248,5 +1304,14 @@ a:hover {
 
   .nav-bar {
     width: 10px;
+  }
+
+  .lang-switch {
+    top: 14px;
+    right: 14px;
+  }
+
+  .lang-switch-btn span {
+    display: none;
   }
 }

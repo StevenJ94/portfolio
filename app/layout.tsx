@@ -18,7 +18,7 @@ const mono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   title: `${perfil.nombre} — ${perfil.clase} · Player Card`,
-  description: perfil.tagline,
+  description: perfil.tagline.es,
 };
 
 export default function RootLayout({
