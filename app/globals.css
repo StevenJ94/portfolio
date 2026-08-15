@@ -402,10 +402,10 @@ a:hover {
   gap: 34px;
   padding: 32px;
   border-radius: 22px;
-  border: 1px solid rgba(197, 0, 60, 0.4);
-  background: linear-gradient(160deg, rgba(197, 0, 60, 0.18), rgba(197, 0, 60, 0.05) 58%, rgba(11, 6, 32, 0.7));
+  border: 1px solid rgba(138, 255, 0, 0.3);
+  background: linear-gradient(160deg, rgba(138, 255, 0, 0.13), rgba(138, 255, 0, 0.04) 58%, rgba(11, 6, 32, 0.7));
   backdrop-filter: blur(22px) saturate(155%);
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5), 0 0 44px -14px rgba(197, 0, 60, 0.6),
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5), 0 0 44px -14px rgba(138, 255, 0, 0.45),
     inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
@@ -1277,6 +1277,10 @@ a:hover {
     padding-bottom: 120px;
   }
 
+  .pc-id {
+    justify-content: center;
+  }
+
   .rail {
     top: auto;
     bottom: 16px;
@@ -1313,5 +1317,28 @@ a:hover {
 
   .lang-switch-btn span {
     display: none;
+  }
+
+  /* Proyectos: en pantallas angostas, la grilla se vuelve un carrusel
+     horizontal con scroll-snap (nativo, sin JS) en vez de apilarse. */
+  .mis-grid {
+    display: flex;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 4px 4px 14px;
+    margin: -4px -4px 0;
+    scrollbar-width: none;
+  }
+
+  .mis-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mission {
+    flex: 0 0 82%;
+    min-width: 260px;
+    scroll-snap-align: center;
   }
 }

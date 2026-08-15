@@ -178,12 +178,22 @@ export default function ScrollFX() {
         // secciones cortas cabían juntas en pantalla: una sección aún no
         // alcanzada podía "verse" más cercana que la que realmente ocupa
         // la pantalla, hacer clic en un botón del sidebar iluminaba otro.
-        const mid = window.innerHeight * 0.38;
+        const doc = document.scrollingElement || document.documentElement;
+        const atBottom = window.scrollY + window.innerHeight >= doc.scrollHeight - 2;
         let best = navSecs[0];
-        navSecs.forEach((s) => {
-          const r = s.getBoundingClientRect();
-          if (r.top <= mid) best = s;
-        });
+        if (atBottom) {
+          // La última sección puede no tener suficiente espacio debajo para
+          // que su borde superior llegue a cruzar la línea de referencia
+          // (p. ej. Contacto, seguido solo del footer) — si ya no se puede
+          // hacer scroll más abajo, esa sección es la activa sí o sí.
+          best = navSecs[navSecs.length - 1];
+        } else {
+          const mid = window.innerHeight * 0.38;
+          navSecs.forEach((s) => {
+            const r = s.getBoundingClientRect();
+            if (r.top <= mid) best = s;
+          });
+        }
         if (best && (best.id !== activeId || navW !== window.innerWidth)) {
           activeId = best.id;
           navW = window.innerWidth;

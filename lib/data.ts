@@ -58,7 +58,7 @@ export const perfil = {
 
 export const navItems: { id: string; href: string; label: Bi; color: string }[] = [
   { id: "top", href: "#top", label: { es: "Perfil", en: "Profile" }, color: "#00F0FF" },
-  { id: "sobre", href: "#sobre", label: { es: "Sobre mí", en: "About" }, color: "#C5003C" },
+  { id: "sobre", href: "#sobre", label: { es: "Sobre mí", en: "About" }, color: "#8AFF00" },
   { id: "misiones", href: "#misiones", label: { es: "Proyectos", en: "Projects" }, color: "#BC6CFF" },
   { id: "stats", href: "#stats", label: { es: "Skills", en: "Skills" }, color: "#FFCA06" },
   { id: "contacto", href: "#contacto", label: { es: "Contacto", en: "Contact" }, color: "#FF5CA8" },
@@ -69,9 +69,9 @@ const PRIMARY = "#FF5CA8";
 const SECONDARY = "#BC6CFF";
 const CYAN = "#00F0FF";
 const BLUE = "#6BB8FF";
-const CYAN_LITE = "#7CF7FF";
+const GREEN = "#8AFF00";
 const YELLOW = "#FFCA06";
-const RED = "#C5003C"
+
 
 export const vitals: { label: Bi; valor: Bi; nota: Bi; color: string }[] = [
   {
@@ -108,7 +108,7 @@ export const vitals: { label: Bi; valor: Bi; nota: Bi; color: string }[] = [
     label: { es: "Metodologías", en: "Methodologies" },
     valor: { es: "Scrum", en: "Scrum" },
     nota: { es: "Trabajo en equipo", en: "Teamwork" },
-    color: RED,
+    color: GREEN,
   },
 ];
 
@@ -362,7 +362,7 @@ export const ejes: { k: Bi; v: number; color: string }[] = [
   { k: { es: "Trabajo en equipo", en: "Teamwork" }, v: 90, color: SECONDARY },
   { k: { es: "Comunicación", en: "Communication" }, v: 85, color: CYAN },
   { k: { es: "Pensamiento crítico", en: "Critical thinking" }, v: 85, color: BLUE },
-  { k: { es: "Gestión del tiempo", en: "Time management" }, v: 90, color: RED },
+  { k: { es: "Gestión del tiempo", en: "Time management" }, v: 90, color: GREEN },
 ];
 
 export const contacto: { kicker: Bi; titulo: Bi; desc: Bi } = {
