@@ -361,8 +361,8 @@ export const ejes: { k: Bi; v: number; color: string }[] = [
   { k: { es: "Resolución de problemas", en: "Problem solving" }, v: 95, color: PRIMARY },
   { k: { es: "Trabajo en equipo", en: "Teamwork" }, v: 90, color: SECONDARY },
   { k: { es: "Comunicación", en: "Communication" }, v: 85, color: CYAN },
-  { k: { es: "Pensamiento crítico", en: "Critical thinking" }, v: 80, color: BLUE },
-  { k: { es: "Gestión del tiempo", en: "Time management" }, v: 75, color: RED },
+  { k: { es: "Pensamiento crítico", en: "Critical thinking" }, v: 85, color: BLUE },
+  { k: { es: "Gestión del tiempo", en: "Time management" }, v: 90, color: RED },
 ];
 
 export const contacto: { kicker: Bi; titulo: Bi; desc: Bi } = {
