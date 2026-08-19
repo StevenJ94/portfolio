@@ -91,13 +91,13 @@ export const vitals: { label: Bi; valor: Bi; nota: Bi; color: string }[] = [
   {
     label: { es: "Especialidad", en: "Specialization" },
     valor: { es: "5", en: "5" },
-    nota: { es: "Angular, React, Next, RN, React Native", en: "Angular, React, Next.js, React Native" },
+    nota: { es: "Angular, React, Next.js, React Native", en: "Angular, React, Next.js, React Native" },
     color: CYAN,
   },
   {
     label: { es: "Enfoque", en: "Focus" },
     valor: { es: "Optimización", en: "Optimization" },
-    nota: { es: "Resolución de problemas", en: "Vibe-coding" },
+    nota: { es: "Resolución de problemas", en: "Problem solving" },
     color: BLUE,
   },
   {
