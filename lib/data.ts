@@ -28,16 +28,19 @@ export type Bi = { es: string; en: string };
 
 export const perfil = {
   nombre: "Steven Ruíz",
-  clase: "Frontend & Mobile Developer",
+  clase: {
+    es: "Desarrollador Front-End y Móvil",
+    en: "Front-End & Mobile Developer",
+  } as Bi,
   nivel: 32,
   edad: calcularEdad(),
   estado: {
-    es: "Disponible · abierto a nuevas oportunidades",
-    en: "Available · open to new opportunities",
+    es: "Disponible para nuevas oportunidades",
+    en: "Available for new opportunities",
   } as Bi,
   tagline: {
-    es: `Desarrollador Front‑End con más de ${automaticDate()} años de experiencía creando aplicaciones web y móviles modernas con Angular, React, Next.js y React Native.`,
-    en: `Front‑End Developer with over ${automaticDate()} years of experience building modern web and mobile applications with Angular, React, Next.js, and React Native.`,
+    es: `Desarrollador Front-End y Móvil con más de ${automaticDate()} años de experiencia creando aplicaciones web y móviles modernas, escalables y centradas en la experiencia de usuario. Especializado en Angular, React, Next.js y React Native.`,
+    en: `Front-End & Mobile Developer with +${automaticDate()} years of experience creating modern, scalable web and mobile applications focused on user experience. Specialized in Angular, React, Next.js and React Native.`,
   } as Bi,
   email: "stevenruiz.p94@gmail.com",
   telefono: "+57 300 636 9312",
@@ -53,7 +56,6 @@ export const perfil = {
   // La foto vive en /public/profile.png — no se toca.
   avatar: "/profile.png",
   monograma: "S",
-  // copyright: "© 2026 Steven Ruíz · Save file v2.7",
 };
 
 export const navItems: { id: string; href: string; label: Bi; color: string }[] = [
@@ -76,45 +78,45 @@ const YELLOW = "#FFCA06";
 export const vitals: { label: Bi; valor: Bi; nota: Bi; color: string }[] = [
   {
     label: { es: "Experiencia", en: "Experience" },
-    valor: { es: automaticDate() + '+', en: automaticDate() + '+' },
-    nota: { es: "años en la industria", en: "years in the industry" },
+    valor: { es: "+" + automaticDate(), en: "+" + automaticDate() },
+    nota: { es: "Años en la industria", en: "Years in the industry" },
     color: SECONDARY,
   },
   {
     label: { es: "Proyectos", en: "Projects" },
-    valor: { es: "6+", en: "6+" },
-    nota: { es: "en producción", en: "in production" },
+    valor: { es: "+6", en: "+6" },
+    nota: { es: "En producción", en: "In production" },
     color: PRIMARY,
   },
   {
-    label: { es: "Stack", en: "Stack" },
-    valor: { es: "4", en: "4" },
-    nota: { es: "Angular · React · Next · RN", en: "Angular · React · Next · RN" },
+    label: { es: "Especialidad", en: "Specialization" },
+    valor: { es: "5", en: "5" },
+    nota: { es: "Angular, React, Next, RN, React Native", en: "Angular, React, Next.js, React Native" },
     color: CYAN,
   },
   {
-    label: { es: "Fuerte", en: "Strength" },
-    valor: { es: "Adapta bilidad", en: "Adaptability" },
-    nota: { es: "Resolución de problemas", en: "Problem solving" },
+    label: { es: "Enfoque", en: "Focus" },
+    valor: { es: "Optimización", en: "Optimization" },
+    nota: { es: "Resolución de problemas", en: "Vibe-coding" },
     color: BLUE,
   },
   {
     label: { es: "IA", en: "AI" },
-    valor: { es: "Vibe coding", en: "Vibe coding" },
-    nota: { es: "Automatización ", en: "Automation" },
+    valor: { es: "Automatización", en: "Automation" },
+    nota: { es: "Innovación", en: "Innovation" },
     color: YELLOW,
   },
   {
-    label: { es: "Metodologías", en: "Methodologies" },
+    label: { es: "Metodología", en: "Methodology" },
     valor: { es: "Scrum", en: "Scrum" },
-    nota: { es: "Trabajo en equipo", en: "Teamwork" },
+    nota: { es: "Colaboración", en: "Collaboration" },
     color: GREEN,
   },
 ];
 
 export const registro: { rol: Bi; empresa: string; periodo: Bi; color: string; desc: Bi }[] = [
   {
-    rol: { es: "Desarrollador Móvil y Front‑End", en: "Mobile & Front‑End Developer" },
+    rol: { es: "Desarrollador Móvil y Front-End", en: "Mobile & Front-End Developer" },
     empresa: "Grupo HSEQ",
     periodo: { es: "2025 — Hoy", en: "2025 — Present" },
     color: CYAN,
@@ -124,7 +126,7 @@ export const registro: { rol: Bi; empresa: string; periodo: Bi; color: string; d
     },
   },
   {
-    rol: { es: "Desarrollador Front‑End", en: "Front‑End Developer" },
+    rol: { es: "Desarrollador Front-End", en: "Front-End Developer" },
     empresa: "Binar10 Tecnología y Servicios",
     periodo: { es: "2019 — Hoy", en: "2019 — Present" },
     color: SECONDARY,
@@ -158,12 +160,12 @@ export const registro: { rol: Bi; empresa: string; periodo: Bi; color: string; d
 export const sobreMi = {
   parrafos: {
     es: [
-      `Soy Desarrollador Front‑End con más de ${automaticDate()} años de experiencia en la industria tecnológica, especializado en aplicaciones web y móviles modernas. Construyo productos multiplataforma con Angular, React, Next.js y React Native.`,
-      "Trabajo con metodologías ágiles (Scrum), colaboro con equipos multidisciplinarios y me adapto rápido a los cambios del proyecto. Con base en Barranquilla, Colombia, y abierto a trabajo remoto.",
+      "Me gusta transformar ideas y necesidades en productos digitales funcionales, intuitivos y bien estructurados. A lo largo de mi experiencia he tenido la oportunidad de participar en proyectos de diferentes sectores, adaptándome a nuevos equipos, retos y formas de trabajo. Disfruto encontrar soluciones prácticas, resolver problemas y cuidar los detalles que hacen que un producto sea más fácil de usar y mantener.",
+      "Actualmente vivo en Barranquilla, Colombia, y estoy abierto a nuevas oportunidades de trabajo remoto. Busco seguir desarrollándome en entornos dinámicos, asumir nuevos desafíos y participar en proyectos que me permitan ampliar mis conocimientos y continuar creciendo profesionalmente.",
     ],
     en: [
-      `I'm a Front‑End Developer with over ${automaticDate()} years of experience in the tech industry, specialized in modern web and mobile applications. I build cross-platform products with Angular, React, Next.js, and React Native.`,
-      "I work with agile methodologies (Scrum), collaborate with multidisciplinary teams, and adapt quickly to project changes. Based in Barranquilla, Colombia, and open to remote work.",
+      "I enjoy turning ideas and needs into functional, intuitive and well-structured digital products. Throughout my career, I have had the opportunity to work on projects across different industries, adapting to new teams, challenges and ways of working. I enjoy finding practical solutions, solving problems and paying attention to the details that make a product easier to use and maintain.",
+      "I'm currently based in Barranquilla, Colombia, and open to new remote opportunities. I'm looking to continue growing professionally, take on new challenges and work on projects that allow me to expand my knowledge and keep learning.",
     ],
   },
   ficha: [
@@ -212,11 +214,11 @@ export const RAREZA_LABEL: Record<Rareza, Bi> = {
 export const misiones = [
   {
     num: "#01",
-    titulo: "Puntos saludables",
+    titulo: "Puntos Saludables",
     empresa: "Binar10",
     desc: {
-      es: "Página web con landing, dashboard que permite al usuario registrarse, iniciar sesión, cunsultar datos de comprar e interactuar y redimir bonos.",
-      en: "A website with a landing page and dashboard where users can sign up, log in, check purchase data, interact with the platform, and redeem coupons.",
+      es: "Plataforma web que permite a los usuarios registrarse, consultar información sobre sus compras, acumular beneficios y redimir bonos. Estuve a cargo del desarrollo de la plataforma y de la construcción de la experiencia de usuario.",
+      en: "Web platform that allows users to register, view information about their purchases, earn benefits and redeem rewards. I was responsible for developing the platform and building the user experience.",
     } as Bi,
     tags: ["Nextjs", "google maps", "Tailwinds"],
     rareza: "Legendario" as Rareza,
@@ -229,8 +231,8 @@ export const misiones = [
     titulo: "Unidrogas",
     empresa: "Binar10",
     desc: {
-      es: "Landing  y panel administrativo para usuarios que gestionan y administran productos de droguerías y empleados. Desarrollo y mantenimiento continuo.",
-      en: "Landing page and admin panel for users who manage drugstore products and employees. Ongoing development and maintenance.",
+      es: "Página web y panel administrativo para la gestión de productos, usuarios y empleados de una cadena de droguerías. Trabajé en el desarrollo y mantenimiento de sus diferentes módulos, incorporando mejoras de acuerdo con las necesidades del proyecto.",
+      en: "Website and administrative dashboard for managing products, users and employees within a pharmacy chain. I worked on the development and maintenance of its different modules, implementing improvements based on the project's needs.",
     } as Bi,
     tags: ["Angular", "Bootstrap", "NGX-Bootstrap"],
     rareza: "Legendario" as Rareza,
@@ -243,8 +245,8 @@ export const misiones = [
     titulo: "SuperaT",
     empresa: "Binar10",
     desc: {
-      es: "Dashboard multi empresa, que trabajos con diferente tipos de información, usando herramientas modernas para la visualización de datos, ya sea graficos, mapas, o usando otras aplicaciones.",
-      en: "Multi-company dashboard that works with different types of information, using modern tools for data visualization — charts, maps, or other integrated applications.",
+      es: "Dashboard multiempresa que trabaja con diferentes tipos de información y permite visualizarla mediante gráficos, mapas y elementos interactivos. Me enfoqué en la construcción de componentes y herramientas para presentar los datos de forma clara e interactiva.",
+      en: "Multi-company dashboard that works with different types of information and allows users to visualize data through charts, maps and interactive elements. I focused on building components and tools to present data in a clear and interactive way.",
     } as Bi,
     tags: ["Angular", "Google Maps", "RXJS", "NGX-Bootstrap"],
     rareza: "Legendario" as Rareza,
@@ -257,8 +259,8 @@ export const misiones = [
     titulo: "GIMED",
     empresa: "Binar10",
     desc: {
-      es: "Plataforma de venta de productos de droguería como parte del equipo de desarrollo principal, con renderizado del lado del servidor.",
-      en: "Drugstore product sales platform built as part of the core development team, with server-side rendering.",
+      es: "Plataforma web para la comercialización de productos de droguería, desarrollada con funcionalidades de e-commerce y renderizado del lado del servidor. Participé en el desarrollo e implementación de diferentes funcionalidades de la plataforma.",
+      en: "Web platform for selling pharmaceutical products, featuring e-commerce functionality and server-side rendering. I participated in the development and implementation of different platform features.",
     } as Bi,
     tags: ["Angular", "Angular Universal", "RXJS", "NGX-Bootstrap"],
     rareza: "Épico" as Rareza,
@@ -271,8 +273,8 @@ export const misiones = [
     titulo: "Dropopular",
     empresa: "Binar10",
     desc: {
-      es: "Landing  y panel administrativo para usuarios que gestionan y administran productos de droguerías y empleados. Desarrollo y mantenimiento continuo.",
-      en: "Landing page and admin panel for users who manage drugstore products and employees. Ongoing development and maintenance.",
+      es: "Página web y panel administrativo para la gestión de productos, usuarios y empleados de una cadena de droguerías. Formé parte del equipo encargado de construir y mantener los diferentes módulos de la plataforma.",
+      en: "Website and administrative dashboard for managing products, users and employees within a pharmacy chain. I was part of the team responsible for building and maintaining the platform's different modules.",
     } as Bi,
     tags: ["Angular", "Bootstrap", "NGX-Bootstrap"],
     rareza: "Épico" as Rareza,
@@ -285,8 +287,8 @@ export const misiones = [
     titulo: "Julienne",
     empresa: "Binar10",
     desc: {
-      es: "E-commerce que permite a los usuarios visualizar e interactuar con los productos ofrecidos por la página, se puede filtrar por región y categorías.",
-      en: "E-commerce site that lets users browse and interact with the products on offer, with filtering by region and category.",
+      es: "Plataforma e-commerce para la visualización y comercialización de productos, con filtros por región y categoría para facilitar la navegación y búsqueda. Trabajé principalmente en la interfaz, la navegación y las herramientas de filtrado del sitio.",
+      en: "E-commerce platform for showcasing and selling products, with filters by region and category to make navigation and product discovery easier. I primarily worked on the interface, navigation and filtering tools.",
     } as Bi,
     tags: ["Angular", "Bootstrap", "NGX-Bootstrap", "RXJS"],
     rareza: "Épico" as Rareza,
@@ -300,8 +302,8 @@ export const misiones = [
     titulo: "HSEQ Cloud",
     empresa: "Grupo HSEQ",
     desc: {
-      es: "Apliación web que permite el control o administración de datos, ya sea usuarios, herramientas, roles, etc. ",
-      en: "Web application for controlling and managing data such as users, tools, roles, and more.",
+      es: "Aplicación web para la administración y control de usuarios, herramientas, roles y diferentes tipos de información. Participé en la construcción de la plataforma y en la conexión con servicios como Firebase y Google Maps.",
+      en: "Web application for managing and monitoring users, tools, roles and different types of information. I participated in building the platform and integrating services such as Firebase and Google Maps.",
     } as Bi,
     tags: ["NextJS", "Tailwinds", "Firebase", "Google maps"],
     rareza: "Épico" as Rareza,
@@ -311,11 +313,11 @@ export const misiones = [
   },
   {
     num: "#08",
-    titulo: "Binar10",
+    titulo: "Binario",
     empresa: "Binar10",
     desc: {
-      es: "Sitio web Landing, que permite ver servicios como desarrollo de software, marketing digital, ventas de productos, gestión de contenido hasta lograr la sistematización y automatización de tus operaciones.",
-      en: "Landing website showcasing services such as software development, digital marketing, product sales, and content management to help systematize and automate business operations.",
+      es: "Sitio web corporativo enfocado en presentar servicios de desarrollo de software, marketing digital, gestión de contenidos y automatización de procesos. Trabajé en la construcción del sitio y en la organización de su contenido para presentar los servicios de forma clara.",
+      en: "Corporate website focused on showcasing software development, digital marketing, content management and process automation services. I worked on building the website and organizing its content to clearly communicate the company's services.",
     } as Bi,
     tags: ["Wordpress"],
     rareza: "Raro" as Rareza,
@@ -323,36 +325,11 @@ export const misiones = [
     link: "https://www.binar10.co/",
     images: ["/Binar10/1.png", "/Binar10/2.png", "/Binar10/3.png"],
   },
-  // {
-  //   num: "#09",
-  //   titulo: "MOS",
-  //   empresa: "Binar10",
-  //   desc:
-  //     "Tienda online de productos de belleza con pasarela de pago y soporte multi-idioma, desarrollada de extremo a extremo.",
-  //   tags: ["Angular", "Pasarela de pago", "i18n", "RXJS"],
-  //   rareza: "Raro" as Rareza,
-  //   xp: "800",
-  //   link: "",
-  //   images: ["/MOS/1.jpg"],
-  // },
-  // {
-  //   num: "#09",
-  //   titulo: "GirosYa",
-  //   empresa: "Binar10",
-  //   desc:
-  //     "Sitio web que permite a los usuarios hacer giros, solicitar información, y visualizarla.",
-  //   tags: ["Angular", "Bootstrap", "NGX-Bootstrap"],
-  //   rareza: "Raro" as Rareza,
-  //   xp: "650",
-  //   link: "",
-  //   images: ["/GirosYa/1.png"],
-  // },
-
 ].map((m) => ({ ...m, rarezaBg: RAREZAS[m.rareza].bg, rarezaGlow: RAREZAS[m.rareza].glow }));
 
 export const statsIntro: Bi = {
-  es: "Más allá del código: estas son las habilidades blandas que sostienen mi forma de trabajar en equipo, adaptarme a los cambios y resolver problemas día a día.",
-  en: "Beyond the code: these are the soft skills behind how I work with teams, adapt to change, and solve problems every day.",
+  es: "Más allá del código, me interesa mantener una forma de trabajo flexible, colaborativa y orientada a encontrar soluciones. Estos principios me acompañan en cada proyecto y en la manera en que afronto nuevos retos.",
+  en: "Beyond coding, I value a flexible, collaborative and solution-oriented approach to work. These principles guide me throughout each project and shape the way I approach new challenges.",
 };
 
 // El orden define la posición en el radar (empezando arriba y girando a la derecha).
@@ -367,10 +344,10 @@ export const ejes: { k: Bi; v: number; color: string }[] = [
 
 export const contacto: { kicker: Bi; titulo: Bi; desc: Bi } = {
   kicker: { es: "Nueva partida", en: "New quest" },
-  titulo: { es: "¿Buscas un Front‑End para tu equipo?", en: "Looking for a Front‑End dev for your team?" },
+  titulo: { es: "¿Tienes un proyecto en mente?", en: "Do you have a project in mind?" },
   desc: {
-    es: "Estoy abierto a nuevas oportunidades. Escríbeme y te respondo en menos de 24 horas.",
-    en: "I'm open to new opportunities. Reach out and I'll get back to you within 24 hours.",
+    es: "Estoy abierto a nuevas oportunidades y retos. Hablemos sobre cómo puedo aportar a tu próximo proyecto.",
+    en: "I'm open to new opportunities and challenges. Let's talk about how I can contribute to your next project.",
   },
 };
 
@@ -394,7 +371,7 @@ export const ui = {
   },
   about: {
     kicker: { es: "Ficha del jugador", en: "Player sheet" } as Bi,
-    title: { es: "Sobre mí", en: "About me" } as Bi,
+    title: { es: "Sobre mí", en: "About Me" } as Bi,
   },
   missions: {
     kicker: { es: "Misiones completadas", en: "Missions completed" } as Bi,
@@ -405,7 +382,7 @@ export const ui = {
   },
   stats: {
     kicker: { es: "Estadísticas de combate", en: "Combat stats" } as Bi,
-    title: { es: "Atributos", en: "Attributes" } as Bi,
+    title: { es: "Habilidades", en: "Skills" } as Bi,
   },
   contact: {
     emailCopied: { es: "¡Correo copiado!", en: "Email copied!" } as Bi,

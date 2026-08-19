@@ -66,7 +66,7 @@ export default function PlayerCard() {
             </div>
             <h1 className="name">{perfil.nombre}</h1>
             <div className="clase">
-              {ui.player.classLabel[lang]}: <span style={{ color: "var(--pink)" }}>{perfil.clase}</span>
+              {ui.player.classLabel[lang]}: <span style={{ color: "var(--pink)" }}>{perfil.clase[lang]}</span>
             </div>
             <p className="tagline">{perfil.tagline[lang]}</p>
           </div>

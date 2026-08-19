@@ -17,7 +17,7 @@ const mono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: `${perfil.nombre} — ${perfil.clase} · Player Card`,
+  title: `${perfil.nombre} — ${perfil.clase.es} · Player Card`,
   description: perfil.tagline.es,
 };
 
