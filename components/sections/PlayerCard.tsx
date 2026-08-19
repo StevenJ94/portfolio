@@ -71,23 +71,23 @@ export default function PlayerCard() {
             <p className="tagline">{perfil.tagline[lang]}</p>
           </div>
         </div>
-      </div>
 
-      <div className="vitals">
-        {vitals.map((v) => (
-          <div
-            key={v.label.es}
-            className="vital"
-            data-reveal-item
-            style={{ ["--c"]: v.color } as React.CSSProperties}
-          >
-            <div className="vital-label">{v.label[lang]}</div>
-            <div className="vital-val" data-count>
-              {v.valor[lang]}
+        <div className="vitals">
+          {vitals.map((v) => (
+            <div
+              key={v.label.es}
+              className="vital"
+              data-reveal-item
+              style={{ ["--c"]: v.color } as React.CSSProperties}
+            >
+              <div className="vital-label">{v.label[lang]}</div>
+              <div className="vital-val" data-count>
+                {v.valor[lang]}
+              </div>
+              <div className="vital-note">{v.nota[lang]}</div>
             </div>
-            <div className="vital-note">{v.nota[lang]}</div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
       <div className="divider">

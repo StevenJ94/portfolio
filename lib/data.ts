@@ -116,16 +116,6 @@ export const vitals: { label: Bi; valor: Bi; nota: Bi; color: string }[] = [
 
 export const registro: { rol: Bi; empresa: string; periodo: Bi; color: string; desc: Bi }[] = [
   {
-    rol: { es: "Desarrollador Móvil y Front-End", en: "Mobile & Front-End Developer" },
-    empresa: "Grupo HSEQ",
-    periodo: { es: "2025 — Hoy", en: "2025 — Present" },
-    color: CYAN,
-    desc: {
-      es: "Aplicaciones móviles con React Native y Expo para trabajo de campo y cumplimiento normativo.",
-      en: "Mobile applications built with React Native and Expo for field work and regulatory compliance.",
-    },
-  },
-  {
     rol: { es: "Desarrollador Front-End", en: "Front-End Developer" },
     empresa: "Binar10 Tecnología y Servicios",
     periodo: { es: "2019 — Hoy", en: "2019 — Present" },
@@ -133,6 +123,16 @@ export const registro: { rol: Bi; empresa: string; periodo: Bi; color: string; d
     desc: {
       es: "E-commerce y dashboards administrativos con Angular, Angular Universal, RXJS y NGX-Bootstrap.",
       en: "E-commerce platforms and admin dashboards built with Angular, Angular Universal, RxJS, and NGX-Bootstrap.",
+    },
+  },
+  {
+    rol: { es: "Desarrollador Móvil y Front-End", en: "Mobile & Front-End Developer" },
+    empresa: "Grupo HSEQ",
+    periodo: { es: "2025 — 2026", en: "2025 — 2026" },
+    color: CYAN,
+    desc: {
+      es: "Aplicaciones móviles con React Native y Expo para trabajo de campo y cumplimiento normativo.",
+      en: "Mobile applications built with React Native and Expo for field work and regulatory compliance.",
     },
   },
   {
@@ -177,20 +177,35 @@ export const sobreMi = {
   herramientas: [
     "Angular",
     "React",
-    "React Native",
     "Next.js",
+    "React Native",
+    "TypeScript",
+    "JavaScript",
     "RXJS",
     "Angular Universal",
-    "TypeScript",
+    "SSR",
     "HTML5",
-    "Wordpress",
     "CSS",
+    "Tailwind CSS",
     "Bootstrap",
     "NGX-Bootstrap",
+    "Responsive UI",
     "Expo",
-    "Google Maps",
+    "iOS & Android",
+    "NodeJS",
+    "Mongo DB",
+    "Firebase",
+    "Firebase Auth",
+    "REST APIs",
+    "Google Maps API",
+    "Dashboards",
+    "Data Viz",
+    "SEO",
+    "Web Performance",
     "Git",
     "Scrum",
+    "Agile",
+    "Wordpress",
     "Vibe coding",
   ],
 };

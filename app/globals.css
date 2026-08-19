@@ -12,6 +12,7 @@
   --pink: #ff5ca8;
   --primary: #ff5ca8;
   --secondary: #bc6cff;
+  --green: #8aff00;
   --mono: var(--font-mono), ui-monospace, "SFMono-Regular", monospace;
 }
 
@@ -398,7 +399,7 @@ a:hover {
 
 .s-about {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
   gap: 34px;
   padding: 32px;
   border-radius: 22px;
@@ -418,7 +419,7 @@ a:hover {
 
 .s-stats {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
   gap: 34px;
   align-items: center;
   padding: 30px;
@@ -506,8 +507,9 @@ a:hover {
 .pc-top {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-  gap: 34px;
+  /* Identidad (izquierda) | tarjetas vitals (derecha), mitad y mitad. */
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 30px;
   align-items: center;
 }
 
@@ -559,8 +561,9 @@ a:hover {
 
 .avatar {
   position: relative;
-  width: 214px;
-  height: 214px;
+  width: clamp(150px, 13vw, 214px);
+  aspect-ratio: 1;
+  height: auto;
   flex: none;
   transform-style: preserve-3d;
   animation: float2 8s ease-in-out infinite;
@@ -601,7 +604,7 @@ a:hover {
 }
 
 .pc-info {
-  min-width: 220px;
+  min-width: 190px;
   flex: 1;
 }
 
@@ -626,8 +629,8 @@ a:hover {
 }
 
 .name {
-  margin: 14px 0 8px;
-  font-size: clamp(36px, 5vw, 58px);
+  margin: 12px 0 8px;
+  font-size: clamp(30px, 3.1vw, 44px);
   line-height: 0.98;
   letter-spacing: -0.03em;
   font-weight: 700;
@@ -642,25 +645,25 @@ a:hover {
 }
 
 .tagline {
-  margin: 18px 0 0;
-  max-width: 40ch;
-  font-size: 16px;
+  margin: 16px 0 0;
+  max-width: 34ch;
+  font-size: 15px;
   line-height: 1.5;
   color: rgba(237, 231, 255, 0.66);
 }
 
 .vitals {
   display: grid;
-  /* Tarjetas anchas (fila completa bajo la identidad) para que los valores-palabra
-     largos ("AUTOMATIZACIÓN") quepan en una sola línea al mismo tamaño que el resto. */
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 12px;
-  margin-top: 26px;
+  /* Ocupan la mitad derecha del hero: 2 columnas compactas de 3 filas. */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 0;
 }
 
 .vital {
-  padding: 18px;
-  border-radius: 14px;
+  padding: 13px 14px;
+  border-radius: 13px;
+  min-width: 0;
   border: 1px solid rgba(237, 231, 255, 0.12);
   background: rgba(8, 5, 18, 0.6);
   backdrop-filter: blur(12px);
@@ -682,9 +685,10 @@ a:hover {
 }
 
 .vital-val {
-  margin-top: 8px;
-  font-size: 28px;
+  margin-top: 6px;
+  font-size: clamp(16px, 1.45vw, 21px);
   font-weight: 600;
+  overflow-wrap: break-word;
   color: var(--c);
   text-shadow: 0 0 20px currentColor;
   /* Todos los valores en mayúsculas y al mismo tamaño (SCRUM, OPTIMIZACIÓN, …). */
@@ -694,7 +698,7 @@ a:hover {
 
 .vital-note {
   margin-top: 4px;
-  font-size: 12px;
+  font-size: 11px;
   color: rgba(237, 231, 255, 0.4);
 }
 
@@ -802,14 +806,14 @@ a:hover {
 .ficha-item {
   padding: 16px;
   border-radius: 13px;
-  border: 1px solid rgba(237, 231, 255, 0.12);
+  border: 1px solid rgba(138, 255, 0, 0.18);
   background: rgba(8, 5, 18, 0.45);
   transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
 }
 
 .ficha-item:hover {
-  border-color: rgba(0, 240, 255, 0.42);
-  box-shadow: 0 0 24px rgba(0, 240, 255, 0.16);
+  border-color: rgba(138, 255, 0, 0.45);
+  box-shadow: 0 0 24px rgba(138, 255, 0, 0.18);
   transform: translateY(-3px);
 }
 
@@ -818,7 +822,7 @@ a:hover {
   font-size: 10px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(237, 231, 255, 0.42);
+  color: rgba(138, 255, 0, 0.62);
 }
 
 .ficha-v {
@@ -842,16 +846,16 @@ a:hover {
   text-transform: uppercase;
   padding: 6px 10px;
   border-radius: 6px;
-  color: rgba(237, 231, 255, 0.7);
-  border: 1px solid rgba(188, 108, 255, 0.28);
-  background: rgba(188, 108, 255, 0.08);
+  color: rgba(237, 231, 255, 0.72);
+  border: 1px solid rgba(138, 255, 0, 0.3);
+  background: rgba(138, 255, 0, 0.08);
   transition: color 0.25s, border-color 0.25s, box-shadow 0.25s;
 }
 
 .tool:hover {
-  color: var(--cyan-lite);
-  border-color: rgba(0, 240, 255, 0.5);
-  box-shadow: 0 0 18px rgba(0, 240, 255, 0.25);
+  color: var(--green);
+  border-color: rgba(138, 255, 0, 0.55);
+  box-shadow: 0 0 24px rgba(138, 255, 0, 0.18);
 }
 
 /* ============================================================
@@ -891,7 +895,7 @@ a:hover {
 
 .mis-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(310px, 100%), 1fr));
   gap: 20px;
 }
 
@@ -1274,6 +1278,68 @@ a:hover {
 }
 
 /* ============================================================
+   Responsive: el hero deja de ser dos columnas
+   ============================================================ */
+@media (max-width: 1100px) {
+  /* Ritmo vertical único en todo el rango apilado: la separación entre
+     secciones la da solo el gap del .main. Entre dos tarjetas de vidrio con
+     glow hace falta más aire que en desktop para que se lean separadas. */
+  .main {
+    gap: 64px;
+  }
+
+  .s-contact {
+    margin-top: 0;
+  }
+
+  .pc-top {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .vitals {
+    grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr));
+    gap: 12px;
+    margin-top: 6px;
+  }
+
+  .avatar {
+    width: 214px;
+  }
+
+  /* Apiladas hay ancho de sobra: se recupera el tamaño legible de la tarjeta. */
+  .vital {
+    padding: 16px 18px;
+  }
+
+  .vital-label {
+    font-size: 11px;
+  }
+
+  .vital-val {
+    font-size: 25px;
+  }
+
+  .vital-note {
+    font-size: 13px;
+    color: rgba(237, 231, 255, 0.55);
+  }
+}
+
+@media (max-width: 520px) {
+  .vitals {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .vital-val {
+    font-size: 27px;
+  }
+
+  .vital-note {
+    font-size: 13.5px;
+  }
+}
+
+/* ============================================================
    Responsive: rail collapses to bottom pill
    ============================================================ */
 @media (max-width: 900px) {
@@ -1314,6 +1380,11 @@ a:hover {
 
   .nav-bar {
     width: 10px;
+  }
+
+  .nav-dot {
+    left: 50%;
+    margin-left: -3.5px;
   }
 
   .lang-switch {
