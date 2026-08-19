@@ -689,8 +689,9 @@ a:hover {
 /* Valores que son palabras largas (p. ej. "Optimización", "Automatización")
    usan un tamaño menor para que quepan en una línea y no se partan a la mitad. */
 .vital-val.is-word {
-  font-size: 16px;
-  line-height: 1.2;
+  font-size: 14px;
+  line-height: 1.25;
+  letter-spacing: 0.01em;
 }
 
 .vital-note {
