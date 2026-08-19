@@ -60,9 +60,9 @@ export const perfil = {
 
 export const navItems: { id: string; href: string; label: Bi; color: string }[] = [
   { id: "top", href: "#top", label: { es: "Perfil", en: "Profile" }, color: "#00F0FF" },
-  { id: "sobre", href: "#sobre", label: { es: "Sobre mí", en: "About" }, color: "#8AFF00" },
+  { id: "sobre", href: "#sobre", label: { es: "Sobre mí", en: "About me" }, color: "#8AFF00" },
   { id: "misiones", href: "#misiones", label: { es: "Proyectos", en: "Projects" }, color: "#BC6CFF" },
-  { id: "stats", href: "#stats", label: { es: "Skills", en: "Skills" }, color: "#FFCA06" },
+  { id: "stats", href: "#stats", label: { es: "Habilidades", en: "Skills" }, color: "#FFCA06" },
   { id: "contacto", href: "#contacto", label: { es: "Contacto", en: "Contact" }, color: "#FF5CA8" },
 ];
 
