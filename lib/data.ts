@@ -170,7 +170,7 @@ export const sobreMi = {
   },
   ficha: [
     { k: { es: "Ubicación", en: "Location" } as Bi, v: { es: "Barranquilla, Colombia", en: "Barranquilla, Colombia" } as Bi },
-    { k: { es: "Idiomas", en: "Languages" } as Bi, v: { es: "Español", en: "Spanish" } as Bi },
+    { k: { es: "Idiomas", en: "Languages" } as Bi, v: { es: "Español e Inglés", en: "Spanish & English" } as Bi },
     { k: { es: "Ahora", en: "Currently at" } as Bi, v: { es: "Binar10 Tecnología y Servicios", en: "Binar10 Tecnología y Servicios" } as Bi },
     { k: { es: "Modo", en: "Mode" } as Bi, v: { es: "Remoto · abierto a ofertas laborales", en: "Remote · open to job offers" } as Bi },
   ],
