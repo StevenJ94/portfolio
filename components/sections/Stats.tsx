@@ -29,25 +29,23 @@ const LABEL_LINE_HEIGHT = 12;
 const LABEL_MAX_CHARS = 9;
 
 // Reparte una etiqueta larga en varias líneas cortas para que no se salga
-// del viewBox del radar ni tape los elementos vecinos. Si una sola palabra
-// (p. ej. "ADAPTABILITY") ya supera el máximo, también se parte por caracteres.
-function wrapLabel(label: string): string[] {
-  const words = label.split(" ");
+// del viewBox del radar ni tape los elementos vecinos. Solo corta en los
+// espacios: una palabra nunca se parte por caracteres, aunque sola supere el
+// máximo (p. ej. "COMMUNICATION" queda entera en su propia línea). Las
+// palabras de enlace cortas ("DE", "DEL", "EN") viajan con la línea anterior
+// para no quedar solas: "RESOLUCIÓN DE / PROBLEMAS", no "RESOLUCIÓN / DE / …".
+const LABEL_GLUE_CHARS = 3;
 
+function wrapLabel(label: string): string[] {
   const lines: string[] = [];
   let current = "";
-  for (const rawWord of words) {
-    let word = rawWord;
-    while (word.length > LABEL_MAX_CHARS) {
-      if (current) {
-        lines.push(current);
-        current = "";
-      }
-      lines.push(word.slice(0, LABEL_MAX_CHARS));
-      word = word.slice(LABEL_MAX_CHARS);
+  for (const word of label.split(" ")) {
+    if (!current) {
+      current = word;
+      continue;
     }
-    const candidate = current ? `${current} ${word}` : word;
-    if (candidate.length > LABEL_MAX_CHARS && current) {
+    const candidate = `${current} ${word}`;
+    if (candidate.length > LABEL_MAX_CHARS && word.length > LABEL_GLUE_CHARS) {
       lines.push(current);
       current = word;
     } else {

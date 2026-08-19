@@ -39,9 +39,11 @@ body {
   /* Evita palabras huérfanas: ningún texto del sitio debe dejar una sola
      palabra sola en la última línea. Se hereda a todo el proyecto. */
   text-wrap: pretty;
-  /* Si una sola palabra (p. ej. "Adaptability") es más ancha que su caja,
-     se parte en vez de desbordarse. También se hereda a todo el proyecto. */
-  overflow-wrap: break-word;
+  /* Ninguna palabra se parte por la mitad: el salto solo ocurre en espacios.
+     Se hereda a todo el proyecto (antes: break-word, que producía cortes como
+     "COMMUNICA / TION" o "MANAGEMEN / T"). */
+  overflow-wrap: normal;
+  word-break: normal;
 }
 
 /* Los títulos cortos (nombres, h2, etc.) se benefician más de "balance",
@@ -688,7 +690,6 @@ a:hover {
   margin-top: 6px;
   font-size: clamp(16px, 1.45vw, 21px);
   font-weight: 600;
-  overflow-wrap: break-word;
   color: var(--c);
   text-shadow: 0 0 20px currentColor;
   /* Todos los valores en mayúsculas y al mismo tamaño (SCRUM, OPTIMIZACIÓN, …). */
